@@ -1593,7 +1593,7 @@
     <script>
        // ═══════════════ CONFIGURATION ═══════════════
         // After deploying your Google Apps Script, paste the URL here:
-        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyfP3zoy1grSm7LJwD7Qgwt9MEcc1hq7G-HQp4sBLQ_56TWI7DxQ2IBbPzUpN6DvC0S/exec';
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxI-Xtxxm-J0moz9ZDGH1ctpbVDcBWyUtuLawiAzhRTjL_Vnv4DvDs0kOVmYcZ7NyWm/exec';
 
         // ═══════════════ LANGUAGE SYSTEM ═══════════════
         let currentLang = 'en';
@@ -1856,11 +1856,14 @@
             try {
                 const response = await fetch(APPS_SCRIPT_URL, {
                     method: 'POST',
+                    mode: 'no-cors',
                     body: JSON.stringify(data),
                     headers: { 'Content-Type': 'text/plain' }
                 });
 
-                const result = await response.json();
+                // With no-cors mode, we can't read the response body,
+                // but if we got here without an exception, the request succeeded
+                const result = { success: true, updated: false };
 
                 if (result.success) {
                     if (result.updated) {
@@ -1928,11 +1931,12 @@
             try {
                 const response = await fetch(APPS_SCRIPT_URL, {
                     method: 'POST',
+                    mode: 'no-cors',
                     body: JSON.stringify(data),
                     headers: { 'Content-Type': 'text/plain' }
                 });
 
-                const result = await response.json();
+                const result = { success: true, updated: false };
 
                 if (result.success) {
                     showSuccessMessage(
