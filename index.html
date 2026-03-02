@@ -36,7 +36,19 @@
             background: var(--cream);
             overflow-x: hidden;
         }
+        /* ═══════════════ FORM VALIDATION ═══════════════ */
+        .input-error {
+            border-color: #e74c3c !important;
+            background: rgba(231, 76, 60, 0.08) !important;
+        }
 
+        .form-error {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            color: #e74c3c;
+            margin-top: 0.4rem;
+        }
         /* ═══════════════ NAVIGATION ═══════════════ */
         .nav {
             position: fixed;
@@ -515,14 +527,14 @@
             line-height: 1.5;
         }
 
-        /* ═══════════════ DRESS CODE ═══════════════ */
+       /* ═══════════════ DRESS CODE ═══════════════ */
         #dresscode {
             background: var(--white);
         }
 
         .dresscode-content {
             text-align: center;
-            max-width: 650px;
+            max-width: 700px;
             margin: 0 auto;
         }
 
@@ -534,19 +546,42 @@
             font-weight: 300;
         }
 
-        .color-palette {
+        .color-palette-group {
+            margin-bottom: 2rem;
+        }
+
+        .palette-row {
             display: flex;
             justify-content: center;
-            gap: 1.2rem;
+            gap: 3rem;
             margin-bottom: 2rem;
             flex-wrap: wrap;
         }
 
+        .palette-family {
+            text-align: center;
+        }
+
+        .palette-family-label {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .palette-swatches {
+            display: flex;
+            gap: 0.6rem;
+            justify-content: center;
+        }
+
         .color-swatch {
-            width: 60px;
-            height: 60px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease;
             cursor: default;
             position: relative;
@@ -558,12 +593,12 @@
 
         .color-swatch .tooltip {
             position: absolute;
-            bottom: -30px;
+            bottom: -28px;
             left: 50%;
             transform: translateX(-50%);
             font-family: 'Josefin Sans', sans-serif;
-            font-size: 0.65rem;
-            letter-spacing: 0.1em;
+            font-size: 0.6rem;
+            letter-spacing: 0.08em;
             white-space: nowrap;
             opacity: 0;
             transition: opacity 0.3s;
@@ -582,7 +617,7 @@
             background: rgba(190, 81, 3, 0.06);
             border: 1px solid rgba(190, 81, 3, 0.15);
             border-radius: 8px;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
         }
 
         .dresscode-forbidden span {
@@ -654,84 +689,100 @@
             display: block;
         }
 
-        /* ═══════════════ MENU ═══════════════ */
+       /* ═══════════════ MENU ═══════════════ */
         #menu {
             background: var(--white);
         }
 
-        .menu-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            max-width: 850px;
+        .menu-info {
+            max-width: 650px;
             margin: 0 auto;
         }
 
-        .menu-card {
+        .menu-info-card {
+            text-align: center;
             padding: 2.5rem;
             border-radius: 12px;
             border: 1px solid rgba(18, 45, 4, 0.06);
-            position: relative;
-            overflow: hidden;
+            background: var(--cream);
         }
 
-        .menu-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
+        .menu-info-text {
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
         }
 
-        .menu-card.classic::before {
-            background: linear-gradient(to right, var(--dark-forest), var(--emerald));
+        .menu-choices {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
         }
 
-        .menu-card.vegan::before {
-            background: linear-gradient(to right, var(--emerald), var(--copper));
+        .menu-choice {
+            text-align: center;
+            padding: 1.5rem 2rem;
+            border-radius: 10px;
+            background: var(--white);
+            border: 1px solid rgba(18, 45, 4, 0.06);
+            min-width: 160px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .menu-card-label {
-            font-family: 'Josefin Sans', sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--emerald);
+        .menu-choice:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(18, 45, 4, 0.08);
+        }
+
+        .menu-choice-icon {
+            font-size: 2rem;
             margin-bottom: 0.75rem;
         }
 
-        .menu-card h3 {
+        .menu-choice-label {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 500;
             color: var(--dark-forest);
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.25rem;
         }
 
-        .menu-course {
-            margin-bottom: 1.25rem;
-        }
-
-        .menu-course-label {
+        .menu-choice-desc {
             font-family: 'Josefin Sans', sans-serif;
-            font-size: 0.6rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--copper);
-            margin-bottom: 0.3rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
         }
 
-        .menu-course-name {
-            font-size: 1.05rem;
-            color: var(--text-medium);
-            font-weight: 400;
-            line-height: 1.5;
+        .menu-choice-divider {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .menu-info-note {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .menu-choices {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
 
         /* ═══════════════ RSVP ═══════════════ */
         #rsvp {
-            background: var(--dark-forest);
+            background: linear-gradient(165deg, #2c1a0a 0%, #1e1209 40%, #261810 100%);
             color: var(--cream);
             position: relative;
             overflow: hidden;
@@ -745,7 +796,7 @@
             width: 500px;
             height: 500px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 103, 79, 0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(190, 81, 3, 0.08) 0%, transparent 70%);
         }
 
         #rsvp .section-label {
@@ -816,7 +867,7 @@
         }
 
         .form-group select option {
-            background: var(--dark-forest);
+            background: #2c1a0a;
             color: var(--cream);
         }
 
@@ -958,11 +1009,16 @@
 
         .rsvp-deadline {
             text-align: center;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
             font-family: 'Josefin Sans', sans-serif;
-            font-size: 0.7rem;
+            font-size: 0.85rem;
             letter-spacing: 0.15em;
-            color: rgba(255, 225, 204, 0.4);
+            color: var(--copper);
+            padding: 0.75rem 1.5rem;
+            border: 1px solid rgba(190, 81, 3, 0.3);
+            border-radius: 6px;
+            display: inline-block;
+            width: 100%;
         }
 
         .rsvp-success {
@@ -986,7 +1042,7 @@
 
         /* ═══════════════ FOOTER ═══════════════ */
         footer {
-            background: var(--dark-forest);
+            background: #1e1209;
             padding: 3rem 2rem;
             text-align: center;
             color: rgba(255, 225, 204, 0.3);
@@ -1052,10 +1108,10 @@
                 right: auto !important;
             }
 
-            .menu-grid {
+            /* .menu-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
-            }
+            } */
 
             .guest-row {
                 grid-template-columns: 1fr;
@@ -1283,7 +1339,7 @@
         </div>
     </section>
 
-    <!-- ═══════════════ DRESS CODE ═══════════════ -->
+<!-- ═══════════════ DRESS CODE ═══════════════ -->
     <section id="dresscode">
         <div class="section-container">
             <div class="section-label" data-en="What to wear" data-bg="Какво да облечете">What to wear</div>
@@ -1291,29 +1347,47 @@
             <div class="divider"></div>
 
             <div class="dresscode-content">
-                <p class="dresscode-description" data-en="Our wedding is a formal celebration. We kindly ask our guests to dress elegantly, drawing inspiration from the colour palette of our wedding." data-bg="Нашата сватба е официално тържество. Любезно молим гостите ни да се облекат елегантно, вдъхновени от цветовата палитра на сватбата ни.">Our wedding is a formal celebration. We kindly ask our guests to dress elegantly, drawing inspiration from the colour palette of our wedding.</p>
+                <p class="dresscode-description" data-en="Our wedding is a formal celebration. We kindly ask our guests to dress elegantly, drawing inspiration from the colour palette of our wedding — including any shades within these colour families." data-bg="Нашата сватба е официално тържество. Любезно молим гостите ни да се облекат елегантно, вдъхновени от цветовата палитра на сватбата ни — включително всякакви нюанси от тези цветови семейства.">Our wedding is a formal celebration. We kindly ask our guests to dress elegantly, drawing inspiration from the colour palette of our wedding — including any shades within these colour families.</p>
 
-                <div class="color-palette">
-                    <div class="color-swatch" style="background: #122d04;">
-                        <span class="tooltip" data-en="Dark Forest" data-bg="Тъмно зелено">Dark Forest</span>
+                <div class="color-palette-group">
+                    <div class="palette-row">
+                        <div class="palette-family">
+                            <div class="palette-family-label" data-en="Greens" data-bg="Зелени">Greens</div>
+                            <div class="palette-swatches">
+                                <div class="color-swatch" style="background: #122d04;"><span class="tooltip" data-en="Dark Forest" data-bg="Тъмно зелено">Dark Forest</span></div>
+                                <div class="color-swatch" style="background: #1e4d1a;"><span class="tooltip" data-en="Pine" data-bg="Борово зелено">Pine</span></div>
+                                <div class="color-swatch" style="background: #00674f;"><span class="tooltip" data-en="Emerald" data-bg="Изумруд">Emerald</span></div>
+                                <div class="color-swatch" style="background: #4a7c59;"><span class="tooltip" data-en="Sage" data-bg="Градинска зеленина">Sage</span></div>
+                                <div class="color-swatch" style="background: #6b8f5e;"><span class="tooltip" data-en="Olive" data-bg="Маслинено">Olive</span></div>
+                            </div>
+                        </div>
+                        <div class="palette-family">
+                            <div class="palette-family-label" data-en="Warm tones" data-bg="Топли тонове">Warm tones</div>
+                            <div class="palette-swatches">
+                                <div class="color-swatch" style="background: #be5103;"><span class="tooltip" data-en="Copper" data-bg="Меден">Copper</span></div>
+                                <div class="color-swatch" style="background: #c96b2a;"><span class="tooltip" data-en="Rust" data-bg="Ръжда">Rust</span></div>
+                                <div class="color-swatch" style="background: #b8784e;"><span class="tooltip" data-en="Terracotta" data-bg="Теракота">Terracotta</span></div>
+                                <div class="color-swatch" style="background: #c9a96e;"><span class="tooltip" data-en="Gold" data-bg="Златно">Gold</span></div>
+                                <div class="color-swatch" style="background: #d4b896;"><span class="tooltip" data-en="Champagne" data-bg="Шампанско">Champagne</span></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="color-swatch" style="background: #00674f;">
-                        <span class="tooltip" data-en="Emerald" data-bg="Изумруд">Emerald</span>
-                    </div>
-                    <div class="color-swatch" style="background: #be5103;">
-                        <span class="tooltip" data-en="Copper" data-bg="Меден">Copper</span>
-                    </div>
-                    <div class="color-swatch" style="background: #ffe1cc;">
-                        <span class="tooltip" data-en="Blush" data-bg="Руменина">Blush</span>
-                    </div>
-                    <div class="color-swatch" style="background: #fff7f7; border: 1px solid #e0d5d5;">
-                        <span class="tooltip" data-en="Cream" data-bg="Кремав">Cream</span>
-                    </div>
+                    <!-- <div class="palette-row">
+                        <div class="palette-family">
+                            <div class="palette-family-label" data-en="Soft neutrals" data-bg="Меки неутрални">Soft neutrals</div>
+                            <div class="palette-swatches">
+                                <div class="color-swatch" style="background: #ffe1cc;"><span class="tooltip" data-en="Blush" data-bg="Руменина">Blush</span></div>
+                                <div class="color-swatch" style="background: #f5d5be;"><span class="tooltip" data-en="Peach" data-bg="Праскова">Peach</span></div>
+                                <div class="color-swatch" style="background: #e8cdb5;"><span class="tooltip" data-en="Sand" data-bg="Пясъчно">Sand</span></div>
+                                <div class="color-swatch" style="background: #fff7f7; border: 1px solid #e0d5d5;"><span class="tooltip" data-en="Cream" data-bg="Кремав">Cream</span></div>
+                            </div>
+                        </div>
+                    </div> -->
                 </div>
 
                 <div class="dresscode-forbidden">
                     <span class="forbidden-x">✕</span>
-                    <span data-en="Please avoid wearing white or ivory — reserved for the bride" data-bg="Моля, избягвайте бяло или слонова кост — запазено за булката">Please avoid wearing white or ivory — reserved for the bride</span>
+                    <span data-en="Please avoid wearing white and black" data-bg="Моля, избягвайте бяло и черно">Please avoid wearing white and black</span>
                 </div>
             </div>
         </div>
@@ -1324,79 +1398,72 @@
         <div class="section-container">
             <div class="section-label" data-en="Logistics" data-bg="Логистика">Logistics</div>
             <h2 class="section-title" data-en="Getting There" data-bg="Как да стигнете">Getting There</h2>
-            <div class="section-subtitle" data-en="We've arranged transportation so you can relax and enjoy the day" data-bg="Организирахме транспорт, за да можете да се отпуснете и да се насладите на деня">We've arranged transportation so you can relax and enjoy the day</div>
+            <div class="section-subtitle" data-en="We've arranged transportation so you can relax and enjoy the night" data-bg="Организирахме транспорт, за да можете да се отпуснете и да се насладите на вечерта">We've arranged transportation so you can relax and enjoy the night</div>
             <div class="divider"></div>
 
             <div class="transport-cards">
+                <div class="transport-card" style="grid-column: 1 / -1;">
+                    <div class="transport-card-icon">📍</div>
+                    <h3 data-en="Venue — Villa Ekaterina" data-bg="Място — Вила Екатерина">Venue — Villa Ekaterina</h3>
+                    <p data-en="Our celebration takes place at Villa Ekaterina, a beautiful estate just outside Sofia surrounded by nature." data-bg="Празненството ни ще се проведе във Вила Екатерина, красиво имение точно извън София, заобиколено от природа.">Our celebration takes place at Villa Ekaterina, a beautiful estate just outside Sofia surrounded by nature.</p>
+                    <a href="https://maps.google.com/?q=Villa+Ekaterina+Bulgaria" target="_blank" 
+                       style="display:inline-block; margin-top:0.75rem; font-family:'Josefin Sans',sans-serif; font-size:0.75rem; letter-spacing:0.1em; color:var(--emerald); text-decoration:none; border-bottom:1px solid var(--emerald);"
+                       data-en="View on Google Maps →" data-bg="Виж в Google Maps →">View on Google Maps →</a>
+                </div>
+
                 <div class="transport-card">
                     <div class="transport-card-icon">🚌</div>
-                    <h3 data-en="Bus to Villa Ekaterina" data-bg="Автобус до Вила Екатерина">Bus to Villa Ekaterina</h3>
-                    <p data-en="A bus will depart from Alexander Nevski Cathedral to take you directly to the venue." data-bg="Автобус ще тръгне от катедрала Александър Невски директно до мястото на събитието.">A bus will depart from Alexander Nevski Cathedral to take you directly to the venue.</p>
-                    <span class="transport-time" data-en="Departure: 16:00" data-bg="Тръгване: 16:00">Departure: 16:00</span>
+                    <h3 data-en="Shuttle from Sofia" data-bg="Шатъл от София">Shuttle from Sofia</h3>
+                    <p data-en="A bus will depart from Alexander Nevski Cathedral to take you directly to the venue." data-bg="Автобус ще тръгне от катедрала Александър Невски директно до Вила Екатерина.">A bus will depart from Alexander Nevski Cathedral to take you directly to the venue.</p>
+                    <span class="transport-time" data-en="Departure: TBD" data-bg="Тръгване: TBD">Departure: TBD</span>
                 </div>
 
                 <div class="transport-card">
                     <div class="transport-card-icon">🚐</div>
                     <h3 data-en="Shuttle Back to Sofia" data-bg="Шатъл обратно до София">Shuttle Back to Sofia</h3>
-                    <p data-en="Two shuttles will be available to take you back to Sofia at the end of the evening." data-bg="Два шатъла ще бъдат на разположение, за да ви отведат обратно до София в края на вечерта.">Two shuttles will be available to take you back to Sofia at the end of the evening.</p>
-                    <span class="transport-time" data-en="Departures: 00:30 & 02:00" data-bg="Тръгване: 00:30 и 02:00">Departures: 00:30 & 02:00</span>
+                    <p data-en="Two shuttles will be available to take you back to Sofia at the end of the evening." data-bg="Автобус ще бъдат на разположение, за да ви отведе обратно до София в края на вечерта.">Two shuttles will be available to take you back to Sofia at the end of the evening.</p>
+                    <span class="transport-time" data-en="Departures: TBD" data-bg="Тръгване: TBD">Departures: TBD</span>
                 </div>
 
                 <div class="transport-card">
-                    <div class="transport-card-icon">📍</div>
-                    <h3 data-en="Venue Location" data-bg="Местоположение">Venue Location</h3>
-                    <p data-en="Villa Ekaterina is located just outside Sofia, surrounded by beautiful nature." data-bg="Вила Екатерина се намира точно извън София, заобиколена от красива природа.">Villa Ekaterina is located just outside Sofia, surrounded by beautiful nature.</p>
-                    <a href="https://maps.google.com/?q=Villa+Ekaterina+Bulgaria" target="_blank" 
-                       style="display:inline-block; margin-top:0.75rem; font-family:'Josefin Sans',sans-serif; font-size:0.75rem; letter-spacing:0.1em; color:var(--emerald); text-decoration:none; border-bottom:1px solid var(--emerald);"
-                       data-en="View on Google Maps →" data-bg="Виж в Google Maps →">View on Google Maps →</a>
+                    <div class="transport-card-icon">🚕</div>
+                    <h3 data-en="Personal Transport" data-bg="Личен транспорт">Personal Transport</h3>
+                    <p data-en="Taxi services are available from Sofia, with a single ride costing around 40 euros.  Parking for personal car is also available in Villa Ekaterina." data-bg="Предлагат се таксиметрови услуги от София, като един курс струва около 40 евро. Вила Екатерина разполага и с паркинг, в случай, че решите да дойдете с личния си автомоби;">Taxi services are available from Sofia, with a single ride costing around 40 euros. Parking for personal car is also available in Villa Ekaterina.</p>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════ MENU ═══════════════ -->
+<!-- ═══════════════ MENU ═══════════════ -->
     <section id="menu">
         <div class="section-container">
             <div class="section-label" data-en="Dining" data-bg="Вечеря">Dining</div>
             <h2 class="section-title" data-en="The Menu" data-bg="Менюто">The Menu</h2>
-            <div class="section-subtitle" data-en="Guests will choose their preferred menu when confirming attendance" data-bg="Гостите ще изберат предпочитаното си меню при потвърждаване на присъствието">Guests will choose their preferred menu when confirming attendance</div>
+            <div class="section-subtitle" data-en="A carefully curated four-course dinner awaits you" data-bg="Внимателно подготвена вечеря от четири блюда ви очаква">A carefully curated four-course dinner awaits you</div>
             <div class="divider"></div>
 
-            <div class="menu-grid">
-                <div class="menu-card classic">
-                    <div class="menu-card-label" data-en="Option A" data-bg="Вариант А">Option A</div>
-                    <h3 data-en="Classic Menu" data-bg="Класическо меню">Classic Menu</h3>
+            <div class="menu-info">
+                <div class="menu-info-card">
+                    <p class="menu-info-text" data-en="All guests will enjoy the same salad, cold starter, and hot starter. The only difference is the main course — you can choose between a classic option with meat or a vegetarian option without." data-bg="Всички гости ще се насладят на една и съща салата, студено предястие и топло предястие. Единствената разлика е основното ястие — можете да изберете между класически вариант с месо или вегетариански вариант без.">All guests will enjoy the same salad, cold starter, and hot starter. The only difference is the main course — you can choose between a classic option with meat or a vegetarian option without.</p>
 
-                    <div class="menu-course">
-                        <div class="menu-course-label" data-en="Starter" data-bg="Предястие">Starter</div>
-                        <div class="menu-course-name" data-en="Placeholder — your starter dish here" data-bg="Placeholder — вашето предястие тук">Placeholder — your starter dish here</div>
+                    <div class="menu-choices">
+                        <div class="menu-choice">
+                            <div class="menu-choice-icon">🥩</div>
+                            <div class="menu-choice-label" data-en="Classic" data-bg="Класическо">Classic</div>
+                            <div class="menu-choice-desc" data-en="Main course with meat" data-bg="Основно ястие с месо">Main course with meat</div>
+                        </div>
+                        <div class="menu-choice-divider">
+                            <span data-en="or" data-bg="или">or</span>
+                        </div>
+                        <div class="menu-choice">
+                            <div class="menu-choice-icon">🌿</div>
+                            <div class="menu-choice-label" data-en="Vegetarian" data-bg="Вегетарианско">Vegetarian</div>
+                            <div class="menu-choice-desc" data-en="Main course without meat" data-bg="Основно ястие без месо">Main course without meat</div>
+                        </div>
                     </div>
-                    <div class="menu-course">
-                        <div class="menu-course-label" data-en="Main Course" data-bg="Основно ястие">Main Course</div>
-                        <div class="menu-course-name" data-en="Placeholder — your main course here" data-bg="Placeholder — вашето основно ястие тук">Placeholder — your main course here</div>
-                    </div>
-                    <div class="menu-course">
-                        <div class="menu-course-label" data-en="Dessert" data-bg="Десерт">Dessert</div>
-                        <div class="menu-course-name" data-en="Placeholder — your dessert here" data-bg="Placeholder — вашият десерт тук">Placeholder — your dessert here</div>
-                    </div>
-                </div>
 
-                <div class="menu-card vegan">
-                    <div class="menu-card-label" data-en="Option B" data-bg="Вариант Б">Option B</div>
-                    <h3 data-en="Vegan Menu" data-bg="Веган меню">Vegan Menu</h3>
-
-                    <div class="menu-course">
-                        <div class="menu-course-label" data-en="Starter" data-bg="Предястие">Starter</div>
-                        <div class="menu-course-name" data-en="Placeholder — your vegan starter here" data-bg="Placeholder — вашето веган предястие тук">Placeholder — your vegan starter here</div>
-                    </div>
-                    <div class="menu-course">
-                        <div class="menu-course-label" data-en="Main Course" data-bg="Основно ястие">Main Course</div>
-                        <div class="menu-course-name" data-en="Placeholder — your vegan main course here" data-bg="Placeholder — вашето веган основно ястие тук">Placeholder — your vegan main course here</div>
-                    </div>
-                    <div class="menu-course">
-                        <div class="menu-course-label" data-en="Dessert" data-bg="Десерт">Dessert</div>
-                        <div class="menu-course-name" data-en="Placeholder — your vegan dessert here" data-bg="Placeholder — вашият веган десерт тук">Placeholder — your vegan dessert here</div>
-                    </div>
+                    <p class="menu-info-note" data-en="You'll select your preference when you RSVP below. If you have any allergies or dietary requirements, please let us know — we'll make sure the restaurant accommodates you." data-bg="Ще изберете предпочитанието си, когато потвърдите присъствието си по-долу. Ако имате алергии или хранителни изисквания, моля уведомете ни — ще се погрижим ресторантът да ги съобрази.">You'll select your preference when you RSVP below. If you have any allergies or dietary requirements, please let us know — we'll make sure the restaurant accommodates you.</p>
                 </div>
             </div>
         </div>
@@ -1416,8 +1483,8 @@
                 <div class="form-group">
                     <label data-en="Will you be attending?" data-bg="Ще присъствате ли?">Will you be attending?</label>
                     <div class="attending-toggle">
-                        <button type="button" onclick="setAttending(true, this)" data-en="Joyfully Accept" data-bg="С радост приемам">Joyfully Accept</button>
-                        <button type="button" onclick="setAttending(false, this)" data-en="Regretfully Decline" data-bg="За съжаление отказвам">Regretfully Decline</button>
+                        <button type="button" onclick="setAttending(true, this)" data-en="Joyfully Accept!" data-bg="Абсолютно да!">Joyfully Accept</button>
+                        <button type="button" onclick="setAttending(false, this)" data-en="Regretfully Decline :(" data-bg="За съжаление няма да мога :(">Regretfully Decline</button>
                     </div>
                 </div>
 
@@ -1439,30 +1506,34 @@
                     </div>
 
                     <div class="form-group">
-                        <label data-en="Your Menu Preference" data-bg="Предпочитание за меню">Your Menu Preference</label>
+                        <label data-en="Main Course Preference" data-bg="Предпочитание за основно ястие">Main Course Preference</label>
                         <select id="mainGuestMenu">
-                            <option value="" data-en="Choose menu..." data-bg="Изберете меню...">Choose menu...</option>
-                            <option value="classic" data-en="Classic Menu" data-bg="Класическо меню">Classic Menu</option>
-                            <option value="vegan" data-en="Vegan Menu" data-bg="Веган меню">Vegan Menu</option>
+                            <option value="" data-en="Choose..." data-bg="Изберете...">Choose...</option>
+                            <option value="classic" data-en="Classic (meat)" data-bg="Класическо (с месо)">Classic (meat)</option>
+                            <option value="vegetarian" data-en="Vegetarian (no meat)" data-bg="Вегетарианско (без месо)">Vegetarian (no meat)</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label data-en="Will you use the bus from Sofia? (Departure 16:00 from Alexander Nevski)" data-bg="Ще ползвате ли автобуса от София? (Тръгване 16:00 от Александър Невски)">Will you use the bus from Sofia? (Departure 16:00 from Alexander Nevski)</label>
+                        <label data-en="Allergies or Dietary Requirements" data-bg="Алергии или хранителни изисквания">Allergies or Dietary Requirements</label>
+                        <input type="text" id="mainGuestAllergies" placeholder="..." data-en-placeholder="e.g. gluten, nuts, lactose..." data-bg-placeholder="напр. глутен, ядки, лактоза..." />
+                    </div>
+
+                    <div class="form-group">
+                        <label data-en="Would you use the shuttle from Sofia?" data-bg="Бихте ли ползвали транспорта от София?">Would you use the bus from Sofia?</label>
                         <select id="mainGuestBus">
                             <option value="" data-en="Select..." data-bg="Изберете...">Select...</option>
-                            <option value="yes" data-en="Yes, I'll take the bus" data-bg="Да, ще взема автобуса">Yes, I'll take the bus</option>
+                            <option value="yes" data-en="Yes, I would" data-bg="Да, бих се възползвал от транспорт">Yes, I would</option>
                             <option value="no" data-en="No, I'll get there on my own" data-bg="Не, ще стигна сам/а">No, I'll get there on my own</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label data-en="Will you use the shuttle back to Sofia?" data-bg="Ще ползвате ли шатъла обратно до София?">Will you use the shuttle back to Sofia?</label>
+                        <label data-en="Would you use the shuttle back to Sofia?" data-bg="Бихте ли ползвали транспорта обратно до София?">Would you use the shuttle back to Sofia?</label>
                         <select id="mainGuestShuttle">
                             <option value="" data-en="Select..." data-bg="Изберете...">Select...</option>
-                            <option value="00:30" data-en="Yes — 00:30 shuttle" data-bg="Да — шатъл в 00:30">Yes — 00:30 shuttle</option>
-                            <option value="02:00" data-en="Yes — 02:00 shuttle" data-bg="Да — шатъл в 02:00">Yes — 02:00 shuttle</option>
-                            <option value="no" data-en="No, I'll arrange my own transport" data-bg="Не, ще си организирам транспорт">No, I'll arrange my own transport</option>
+                            <option value="yes" data-en="Yes, I would" data-bg="Да, бих се възползвал от транспорт">Yes, I would</option>
+                            <option value="no" data-en="No, I'll get there on my own" data-bg="Не, ще стигна сам/а">No, I'll get there on my own</option>
                         </select>
                     </div>
 
@@ -1518,7 +1589,12 @@
     <!-- Toast notification -->
     <div class="toast" id="toast"></div>
 
+    
     <script>
+       // ═══════════════ CONFIGURATION ═══════════════
+        // After deploying your Google Apps Script, paste the URL here:
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyfP3zoy1grSm7LJwD7Qgwt9MEcc1hq7G-HQp4sBLQ_56TWI7DxQ2IBbPzUpN6DvC0S/exec';
+
         // ═══════════════ LANGUAGE SYSTEM ═══════════════
         let currentLang = 'en';
 
@@ -1528,38 +1604,32 @@
                 btn.classList.toggle('active', btn.textContent.trim() === lang.toUpperCase());
             });
 
-            // Update all translatable elements
             document.querySelectorAll('[data-' + lang + ']').forEach(el => {
                 const text = el.getAttribute('data-' + lang);
                 if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                    // Don't overwrite user input
+                    // Update placeholder if available
+                    const phKey = 'data-' + lang + '-placeholder';
+                    if (el.hasAttribute(phKey)) {
+                        el.placeholder = el.getAttribute(phKey);
+                    }
                 } else if (el.tagName === 'OPTION') {
                     el.textContent = text;
                 } else if (el.children.length === 0 || el.classList.contains('hero-pretext') || el.classList.contains('hero-venue')) {
                     el.textContent = text;
                 } else if (el.hasAttribute('data-en') && el.childNodes.length > 0) {
-                    // For elements with mixed content, update text nodes only
-                    el.childNodes.forEach(node => {
-                        if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
-                            // Skip
-                        }
-                    });
-                    // Simple replacement for leaf-text elements
                     if (!el.querySelector('[data-en]')) {
                         el.textContent = text;
                     }
                 }
             });
 
-            // Special handling for hero names (don't translate names)
-            // Update guest entry labels
             updateGuestLabels();
         }
 
         function updateGuestLabels() {
             document.querySelectorAll('.guest-number').forEach((el, i) => {
-                el.textContent = currentLang === 'bg' 
-                    ? `ГОСТ ${i + 1}` 
+                el.textContent = currentLang === 'bg'
+                    ? `ГОСТ ${i + 1}`
                     : `GUEST ${i + 1}`;
             });
         }
@@ -1592,9 +1662,35 @@
             observer.observe(el);
         });
 
+        // ═══════════════ VALIDATION ═══════════════
+        function isValidEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function isValidPhone(phone) {
+            // Strip spaces, dashes, parens, plus sign — then check at least 8 digits remain
+            const digits = phone.replace(/[\s\-\(\)\+]/g, '');
+            return /^\d{8,15}$/.test(digits);
+        }
+
+        function clearValidationErrors() {
+            document.querySelectorAll('.form-error').forEach(el => el.remove());
+            document.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
+        }
+
+        function showFieldError(inputEl, message) {
+            inputEl.classList.add('input-error');
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'form-error';
+            errorDiv.textContent = message;
+            inputEl.parentElement.appendChild(errorDiv);
+        }
+
         // ═══════════════ RSVP LOGIC ═══════════════
         let isAttending = null;
         let guestCount = 0;
+        let isSubmitting = false;
 
         function setAttending(attending, btn) {
             isAttending = attending;
@@ -1614,10 +1710,12 @@
 
             const guestLabel = currentLang === 'bg' ? 'ГОСТ' : 'GUEST';
             const nameLabel = currentLang === 'bg' ? 'Име' : 'Full Name';
-            const menuLabel = currentLang === 'bg' ? 'Меню' : 'Menu';
-            const chooseLbl = currentLang === 'bg' ? 'Изберете меню...' : 'Choose menu...';
-            const classicLbl = currentLang === 'bg' ? 'Класическо меню' : 'Classic Menu';
-            const veganLbl = currentLang === 'bg' ? 'Веган меню' : 'Vegan Menu';
+            const menuLabel = currentLang === 'bg' ? 'Основно ястие' : 'Main Course';
+            const chooseLbl = currentLang === 'bg' ? 'Изберете...' : 'Choose...';
+            const classicLbl = currentLang === 'bg' ? 'Класическо (с месо)' : 'Classic (with meat)';
+            const vegLbl = currentLang === 'bg' ? 'Вегетарианско (без месо)' : 'Vegetarian (no meat)';
+            const allergyLabel = currentLang === 'bg' ? 'Алергии' : 'Allergies';
+            const allergyPlaceholder = currentLang === 'bg' ? 'напр. глутен, ядки...' : 'e.g. gluten, nuts...';
 
             entry.innerHTML = `
                 <div class="guest-entry-header">
@@ -1634,9 +1732,13 @@
                         <select class="guest-menu">
                             <option value="">${chooseLbl}</option>
                             <option value="classic">${classicLbl}</option>
-                            <option value="vegan">${veganLbl}</option>
+                            <option value="vegetarian">${vegLbl}</option>
                         </select>
                     </div>
+                </div>
+                <div class="form-group" style="margin-top: 0.5rem;">
+                    <label>${allergyLabel}</label>
+                    <input type="text" class="guest-allergies" placeholder="${allergyPlaceholder}" />
                 </div>
             `;
             guestList.appendChild(entry);
@@ -1644,7 +1746,6 @@
 
         function removeGuest(id) {
             document.getElementById(id).remove();
-            // Re-number guests
             document.querySelectorAll('.guest-entry').forEach((entry, i) => {
                 const label = currentLang === 'bg' ? 'ГОСТ' : 'GUEST';
                 entry.querySelector('.guest-number').textContent = `${label} ${i + 1}`;
@@ -1658,6 +1759,7 @@
                 email: document.getElementById('mainGuestEmail').value.trim(),
                 phone: document.getElementById('mainGuestPhone').value.trim(),
                 menu: document.getElementById('mainGuestMenu').value,
+                allergies: document.getElementById('mainGuestAllergies').value.trim(),
                 bus: document.getElementById('mainGuestBus').value,
                 shuttle: document.getElementById('mainGuestShuttle').value
             };
@@ -1666,8 +1768,9 @@
             document.querySelectorAll('.guest-entry').forEach(entry => {
                 const name = entry.querySelector('.guest-name').value.trim();
                 const menu = entry.querySelector('.guest-menu').value;
+                const allergies = entry.querySelector('.guest-allergies') ? entry.querySelector('.guest-allergies').value.trim() : '';
                 if (name) {
-                    additionalGuests.push({ name, menu });
+                    additionalGuests.push({ name, menu, allergies });
                 }
             });
 
@@ -1681,65 +1784,139 @@
             };
         }
 
-        function submitRSVP() {
-            const data = collectFormData();
+        function validateRSVP(data) {
+            clearValidationErrors();
+            let valid = true;
 
-            // Validate
-            if (!data.mainGuest.name) {
-                showToast(currentLang === 'bg' ? 'Моля, въведете името си' : 'Please enter your name', 'error');
-                return;
+            const nameEl = document.getElementById('mainGuestName');
+            const emailEl = document.getElementById('mainGuestEmail');
+            const phoneEl = document.getElementById('mainGuestPhone');
+            const menuEl = document.getElementById('mainGuestMenu');
+
+            if (!data.mainGuest.name || data.mainGuest.name.length < 2) {
+                showFieldError(nameEl, currentLang === 'bg' ? 'Моля, въведете пълното си име' : 'Please enter your full name');
+                valid = false;
             }
-            if (!data.mainGuest.email) {
-                showToast(currentLang === 'bg' ? 'Моля, въведете имейл' : 'Please enter your email', 'error');
-                return;
+
+            if (!data.mainGuest.email || !isValidEmail(data.mainGuest.email)) {
+                showFieldError(emailEl, currentLang === 'bg' ? 'Моля, въведете валиден имейл адрес' : 'Please enter a valid email address');
+                valid = false;
             }
+
+            if (!data.mainGuest.phone || !isValidPhone(data.mainGuest.phone)) {
+                showFieldError(phoneEl, currentLang === 'bg' ? 'Моля, въведете валиден телефонен номер (мин. 8 цифри)' : 'Please enter a valid phone number (min. 8 digits)');
+                valid = false;
+            }
+
             if (!data.mainGuest.menu) {
-                showToast(currentLang === 'bg' ? 'Моля, изберете меню' : 'Please select a menu', 'error');
-                return;
+                showFieldError(menuEl, currentLang === 'bg' ? 'Моля, изберете основно ястие' : 'Please select your main course preference');
+                valid = false;
             }
 
-            // Check additional guests have menu selected
-            let guestsValid = true;
+            // Validate additional guests
             document.querySelectorAll('.guest-entry').forEach(entry => {
-                const name = entry.querySelector('.guest-name').value.trim();
-                const menu = entry.querySelector('.guest-menu').value;
+                const nameInput = entry.querySelector('.guest-name');
+                const menuInput = entry.querySelector('.guest-menu');
+                const name = nameInput.value.trim();
+                const menu = menuInput.value;
+
                 if (name && !menu) {
-                    guestsValid = false;
+                    showFieldError(menuInput, currentLang === 'bg' ? 'Моля, изберете меню' : 'Please select a menu');
+                    valid = false;
+                }
+                if (menu && !name) {
+                    showFieldError(nameInput, currentLang === 'bg' ? 'Моля, въведете име' : 'Please enter a name');
+                    valid = false;
                 }
             });
 
-            if (!guestsValid) {
-                showToast(currentLang === 'bg' ? 'Моля, изберете меню за всеки гост' : 'Please select a menu for each guest', 'error');
-                return;
-            }
-
-            console.log('RSVP Data:', JSON.stringify(data, null, 2));
-
-            // ═══════════════════════════════════════════════
-            // TODO: Replace with your actual backend endpoint
-            // Options:
-            //   1. Google Apps Script Web App (writes to Google Sheets)
-            //   2. Your own API endpoint
-            //   3. A service like Formspree, Getform, etc.
-            //
-            // Example with Google Apps Script:
-            // fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
-            //     method: 'POST',
-            //     body: JSON.stringify(data),
-            //     headers: { 'Content-Type': 'text/plain' }
-            // })
-            // ═══════════════════════════════════════════════
-
-            // For now, simulate success
-            showSuccess();
+            return valid;
         }
 
-        function submitDecline() {
-            const name = document.getElementById('declineName').value.trim();
-            if (!name) {
-                showToast(currentLang === 'bg' ? 'Моля, въведете името си' : 'Please enter your name', 'error');
+        async function submitRSVP() {
+            if (isSubmitting) return;
+
+            const data = collectFormData();
+
+            if (!validateRSVP(data)) {
+                // Scroll to first error
+                const firstError = document.querySelector('.input-error');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
                 return;
             }
+
+            isSubmitting = true;
+            const submitBtn = document.querySelector('#attendingSection .submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = currentLang === 'bg' ? 'Изпращане...' : 'Sending...';
+
+            try {
+                const response = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: { 'Content-Type': 'text/plain' }
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    if (result.updated) {
+                        // Duplicate — show update message
+                        showSuccessMessage(
+                            currentLang === 'bg' ? 'Актуализирано!' : 'Updated!',
+                            currentLang === 'bg'
+                                ? 'Вашето потвърждение беше актуализирано успешно.'
+                                : 'Your RSVP has been updated successfully.'
+                        );
+                        showToast(currentLang === 'bg' ? 'Потвърждението ви беше актуализирано!' : 'Your RSVP has been updated!', 'success');
+                    } else {
+                        showSuccessMessage(
+                            currentLang === 'bg' ? 'Благодарим!' : 'Thank You!',
+                            currentLang === 'bg'
+                                ? 'Получихме отговора ви и нямаме търпение да празнуваме с вас!'
+                                : "We've received your response and can't wait to celebrate with you!"
+                        );
+                        showToast(currentLang === 'bg' ? 'Отговорът ви е изпратен!' : 'Your response has been sent!', 'success');
+                    }
+                } else {
+                    throw new Error(result.error || 'Unknown error');
+                }
+            } catch (error) {
+                console.error('RSVP submission error:', error);
+                showToast(
+                    currentLang === 'bg'
+                        ? 'Нещо се обърка. Моля, опитайте отново.'
+                        : 'Something went wrong. Please try again.',
+                    'error'
+                );
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            } finally {
+                isSubmitting = false;
+            }
+        }
+
+        async function submitDecline() {
+            if (isSubmitting) return;
+
+            clearValidationErrors();
+
+            const nameEl = document.getElementById('declineName');
+            const name = nameEl.value.trim();
+
+            if (!name || name.length < 2) {
+                showFieldError(nameEl, currentLang === 'bg' ? 'Моля, въведете името си' : 'Please enter your name');
+                return;
+            }
+
+            isSubmitting = true;
+            const submitBtn = document.querySelector('#decliningSection .submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = currentLang === 'bg' ? 'Изпращане...' : 'Sending...';
 
             const data = {
                 attending: false,
@@ -1748,16 +1925,47 @@
                 submittedAt: new Date().toISOString()
             };
 
-            console.log('Decline Data:', JSON.stringify(data, null, 2));
+            try {
+                const response = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: { 'Content-Type': 'text/plain' }
+                });
 
-            // TODO: Same backend endpoint as above
-            showSuccess();
+                const result = await response.json();
+
+                if (result.success) {
+                    showSuccessMessage(
+                        currentLang === 'bg' ? 'Благодарим!' : 'Thank You!',
+                        currentLang === 'bg'
+                            ? 'Съжаляваме, че няма да можете да присъствате. Ще ви липсвате!'
+                            : "We're sorry you can't make it. You'll be missed!"
+                    );
+                    showToast(currentLang === 'bg' ? 'Отговорът ви е изпратен!' : 'Your response has been sent!', 'success');
+                } else {
+                    throw new Error(result.error || 'Unknown error');
+                }
+            } catch (error) {
+                console.error('Decline submission error:', error);
+                showToast(
+                    currentLang === 'bg'
+                        ? 'Нещо се обърка. Моля, опитайте отново.'
+                        : 'Something went wrong. Please try again.',
+                    'error'
+                );
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            } finally {
+                isSubmitting = false;
+            }
         }
 
-        function showSuccess() {
+        function showSuccessMessage(title, message) {
             document.getElementById('rsvpForm').style.display = 'none';
-            document.getElementById('rsvpSuccess').style.display = 'block';
-            showToast(currentLang === 'bg' ? 'Отговорът ви е изпратен!' : 'Your response has been sent!', 'success');
+            const successEl = document.getElementById('rsvpSuccess');
+            successEl.querySelector('h3').textContent = title;
+            successEl.querySelector('p').textContent = message;
+            successEl.style.display = 'block';
         }
 
         function showToast(message, type) {
