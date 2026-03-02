@@ -3,80 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Victoria & Nikolay - 29.05.2026</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💑</text></svg>">
+    <title>Victoria & Nikolay — 29.05.2026</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Josefin+Sans:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --dark-forest: #122d04;
+            --emerald: #00674f;
+            --copper: #be5103;
+            --blush: #ffe1cc;
+            --cream: #fff7f7;
+            --white: #ffffff;
+            --text-dark: #1a2e0a;
+            --text-medium: #3d5a2e;
+            --text-light: #6b8a5e;
+            --gold-accent: #c9a96e;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Cormorant Garamond', 'Georgia', serif;
-            color: #2d3e2e;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            color: var(--text-dark);
+            background: var(--cream);
             overflow-x: hidden;
         }
 
-        /* Language Toggle */
-        .language-toggle {
+        /* ═══════════════ NAVIGATION ═══════════════ */
+        .nav {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            display: flex;
-            gap: 5px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 10px 15px;
-            border-radius: 25px;
-            box-shadow: 0 2px 10px  rgba(45, 62, 46, 0.35);
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 0 2rem;
+            transition: all 0.5s ease;
         }
 
-        .language-toggle button {
+        .nav.scrolled {
+            background: rgba(255, 247, 247, 0.97);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 30px rgba(18, 45, 4, 0.08);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 300;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav.scrolled .nav-links a {
+            color: var(--text-dark);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--copper);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .lang-toggle {
+            display: flex;
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 4px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .nav.scrolled .lang-toggle {
+            background: rgba(18, 45, 4, 0.06);
+        }
+
+        .lang-toggle button {
             background: none;
             border: none;
-            font-size: 1rem;
-            font-weight: 600;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
             cursor: pointer;
-            padding: 8px 15px;
-            border-radius: 20px;
+            padding: 6px 14px;
+            border-radius: 16px;
             transition: all 0.3s ease;
-            color: #2d3e2e;
-            font-family: 'Arial', sans-serif;
+            color: rgba(255, 255, 255, 0.7);
         }
 
-        .language-toggle button.active {
-            background: #78ae66;
+        .nav.scrolled .lang-toggle button {
+            color: var(--text-light);
+        }
+
+        .lang-toggle button.active {
+            background: var(--emerald);
             color: white;
         }
 
-        .language-toggle button:hover {
-            background: #e3ca97;
-            color: white;
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 200;
         }
 
-        /* Hero Section */
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: white;
+            transition: all 0.3s;
+        }
+
+        .nav.scrolled .hamburger span {
+            background: var(--text-dark);
+        }
+
+        /* ═══════════════ HERO ═══════════════ */
         .hero {
             position: relative;
             height: 100vh;
+            min-height: 600px;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: url('landing-page-coming-soon.png');
+            /* Replace with your photo */
+            background: linear-gradient(135deg, var(--dark-forest) 0%, var(--emerald) 50%, var(--dark-forest) 100%);
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(45, 62, 46, 0.35);
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(18, 45, 4, 0.3) 0%,
+                rgba(18, 45, 4, 0.15) 50%,
+                rgba(18, 45, 4, 0.4) 100%
+            );
             z-index: 1;
         }
 
@@ -85,288 +189,1595 @@
             z-index: 2;
             text-align: center;
             color: white;
-            padding: 20px;
-            animation: fadeIn 2s ease-in;
+            padding: 2rem;
         }
 
-        .hero h1 {
-            font-size: 4.5rem;
+        .hero-pretext {
+            font-family: 'Josefin Sans', sans-serif;
             font-weight: 300;
-            letter-spacing: 0.1em;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            font-size: 0.9rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            opacity: 0.85;
             margin-bottom: 1rem;
+            animation: fadeSlideUp 1.2s ease-out 0.3s both;
         }
 
-        .hero .names {
-            font-size: 3rem;
+        .hero-names {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 400;
-            letter-spacing: 0.15em;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-            margin-bottom: 2rem;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            animation: fadeSlideUp 1.2s ease-out 0.6s both;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .hero .date {
-            font-size: 2rem;
+        .hero-ampersand {
+            display: inline-block;
+            font-size: 0.7em;
+            margin: 0 0.2em;
+            opacity: 0.8;
+        }
+
+        .hero-date {
+            font-family: 'Josefin Sans', sans-serif;
             font-weight: 300;
-            letter-spacing: 0.2em;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+            font-size: 1.3rem;
+            letter-spacing: 0.35em;
+            animation: fadeSlideUp 1.2s ease-out 0.9s both;
+            margin-top: 0.5rem;
         }
 
-        .scroll-indicator {
+        .hero-venue {
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 300;
+            font-size: 0.8rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            opacity: 0.75;
+            margin-top: 1.5rem;
+            animation: fadeSlideUp 1.2s ease-out 1.2s both;
+        }
+
+        .hero-scroll {
             position: absolute;
-            bottom: 30px;
+            bottom: 2.5rem;
             left: 50%;
             transform: translateX(-50%);
             z-index: 2;
-            animation: bounce 2s infinite;
+            animation: gentleBounce 3s ease-in-out infinite;
         }
 
-        .scroll-indicator::before {
-            content: '↓';
-            font-size: 2.5rem;
-            color: white;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+        .hero-scroll svg {
+            width: 24px;
+            height: 24px;
+            stroke: rgba(255, 255, 255, 0.6);
+            stroke-width: 2;
+            fill: none;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateX(-50%) translateY(0);
-            }
-            40% {
-                transform: translateX(-50%) translateY(-10px);
-            }
-            60% {
-                transform: translateX(-50%) translateY(-5px);
-            }
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes gentleBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
         }
 
-        /* Email Section */
-        .email-section {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #f5f1ed 0%, #e8ddd0 100%);
-            padding: 80px 20px;
+        /* ═══════════════ SECTION COMMON ═══════════════ */
+        section {
+            padding: 6rem 2rem;
         }
 
-        .email-container {
-            max-width: 700px;
+        .section-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 300;
+            font-size: 0.75rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--emerald);
             text-align: center;
-            background: white;
-            padding: 60px 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 0.75rem;
         }
 
-        .email-container h2 {
-            font-size: 2.5rem;
-            color: #1a420d;
-            margin-bottom: 1.5rem;
+        .section-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            text-align: center;
+            color: var(--dark-forest);
+            margin-bottom: 1rem;
             font-weight: 400;
         }
 
-        .email-container p {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            color: #5d6d5e;
-            margin-bottom: 2.5rem;
+        .section-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            text-align: center;
+            color: var(--text-light);
+            font-weight: 300;
+            font-style: italic;
+            max-width: 550px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
         }
 
-        .email-button {
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: var(--copper);
+            margin: 0 auto 3rem;
+        }
+
+        /* ═══════════════ OUR STORY TIMELINE ═══════════════ */
+        #story {
+            background: var(--white);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, var(--emerald), var(--copper), var(--emerald), transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 1.5rem 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+            padding-right: 4rem;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+            padding-left: 4rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 2rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--copper);
+            border: 2px solid var(--cream);
+            box-shadow: 0 0 0 3px var(--copper);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -6px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -6px;
+        }
+
+        .timeline-year {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--copper);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--dark-forest);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-text {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .timeline-image {
+            width: 100%;
+            max-width: 280px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-top: 1rem;
+            box-shadow: 0 4px 20px rgba(18, 45, 4, 0.1);
             display: inline-block;
-            background: #78ae66;
-            color: white;
-            padding: 18px 45px;
+        }
+
+        .timeline-image-placeholder {
+            width: 100%;
+            max-width: 280px;
+            height: 200px;
+            border-radius: 4px;
+            margin-top: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--blush) 0%, var(--cream) 100%);
+            border: 1px dashed var(--copper);
+            color: var(--text-light);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        /* ═══════════════ PROGRAM / SCHEDULE ═══════════════ */
+        #program {
+            background: var(--cream);
+            position: relative;
+        }
+
+        #program::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--blush), transparent);
+        }
+
+        .schedule-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .schedule-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(18, 45, 4, 0.06);
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.6s ease;
+        }
+
+        .schedule-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+
+        .schedule-time {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            color: var(--copper);
+            min-width: 70px;
+            padding-top: 0.3rem;
+            font-weight: 500;
+        }
+
+        .schedule-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--emerald), var(--dark-forest));
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 1.2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(74, 103, 65, 0.3);
-            font-family: 'Cormorant Garamond', 'Georgia', serif;
-            letter-spacing: 0.05em;
+            flex-shrink: 0;
+            box-shadow: 0 3px 12px rgba(0, 103, 79, 0.2);
         }
 
-        .email-button:hover {
-            background: #3d5535;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(74, 103, 65, 0.4);
+        .schedule-details h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--dark-forest);
+            margin-bottom: 0.25rem;
         }
 
-        .decorative-line {
-            width: 100px;
-            height: 2px;
-            background: linear-gradient(to right, transparent, #c08b6a, transparent);
-            margin: 2rem auto;
+        .schedule-details p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            font-weight: 300;
+            line-height: 1.5;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero .names {
-                font-size: 2rem;
-            }
-            
-            .hero .date {
-                font-size: 1.5rem;
-            }
-
-            .email-container {
-                padding: 40px 25px;
-            }
-
-            .email-container h2 {
-                font-size: 2rem;
-            }
-
-            .email-container p {
-                font-size: 1.1rem;
-            }
-
-            .language-toggle {
-                top: 15px;
-                right: 15px;
-                padding: 8px 12px;
-            }
-
-            .language-toggle button {
-                font-size: 0.9rem;
-                padding: 6px 12px;
-            }
+        /* ═══════════════ DRESS CODE ═══════════════ */
+        #dresscode {
+            background: var(--white);
         }
 
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero .names {
-                font-size: 1.5rem;
-            }
-            
-            .hero .date {
-                font-size: 1.2rem;
-            }
-
-            .email-container h2 {
-                font-size: 1.8rem;
-            }
-
-            .email-button {
-                padding: 15px 35px;
-                font-size: 1.1rem;
-            }
+        .dresscode-content {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto;
         }
 
-        /* Hide language content */
-        .lang-en, .lang-bg {
-            display: none;
+        .dresscode-description {
+            font-size: 1.15rem;
+            color: var(--text-medium);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
         }
 
-        .lang-en.active, .lang-bg.active {
+        .color-palette {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .color-swatch {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: default;
+            position: relative;
+        }
+
+        .color-swatch:hover {
+            transform: scale(1.15);
+        }
+
+        .color-swatch .tooltip {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+            color: var(--text-light);
+        }
+
+        .color-swatch:hover .tooltip {
+            opacity: 1;
+        }
+
+        .dresscode-forbidden {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: rgba(190, 81, 3, 0.06);
+            border: 1px solid rgba(190, 81, 3, 0.15);
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .dresscode-forbidden span {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            color: var(--copper);
+        }
+
+        .forbidden-x {
+            font-size: 1.3rem;
+        }
+
+        /* ═══════════════ TRANSPORT ═══════════════ */
+        #transport {
+            background: var(--cream);
+        }
+
+        .transport-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .transport-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 20px rgba(18, 45, 4, 0.05);
+            border: 1px solid rgba(18, 45, 4, 0.04);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .transport-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(18, 45, 4, 0.1);
+        }
+
+        .transport-card-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .transport-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--dark-forest);
+            margin-bottom: 0.75rem;
+        }
+
+        .transport-card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .transport-card .transport-time {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            color: var(--copper);
+            font-weight: 500;
+            margin-top: 0.75rem;
             display: block;
         }
 
-        .lang-en.active-inline, .lang-bg.active-inline {
-            display: inline;
+        /* ═══════════════ MENU ═══════════════ */
+        #menu {
+            background: var(--white);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .menu-card {
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(18, 45, 4, 0.06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+
+        .menu-card.classic::before {
+            background: linear-gradient(to right, var(--dark-forest), var(--emerald));
+        }
+
+        .menu-card.vegan::before {
+            background: linear-gradient(to right, var(--emerald), var(--copper));
+        }
+
+        .menu-card-label {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--emerald);
+            margin-bottom: 0.75rem;
+        }
+
+        .menu-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--dark-forest);
+            margin-bottom: 1.5rem;
+        }
+
+        .menu-course {
+            margin-bottom: 1.25rem;
+        }
+
+        .menu-course-label {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--copper);
+            margin-bottom: 0.3rem;
+        }
+
+        .menu-course-name {
+            font-size: 1.05rem;
+            color: var(--text-medium);
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        /* ═══════════════ RSVP ═══════════════ */
+        #rsvp {
+            background: var(--dark-forest);
+            color: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #rsvp::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 103, 79, 0.15) 0%, transparent 70%);
+        }
+
+        #rsvp .section-label {
+            color: var(--copper);
+        }
+
+        #rsvp .section-title {
+            color: var(--blush);
+        }
+
+        #rsvp .section-subtitle {
+            color: rgba(255, 225, 204, 0.6);
+        }
+
+        .rsvp-form {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--blush);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1px solid rgba(255, 225, 204, 0.15);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--cream);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--copper);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 225, 204, 0.35);
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%23c9a96e'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+        }
+
+        .form-group select option {
+            background: var(--dark-forest);
+            color: var(--cream);
+        }
+
+        /* Guest List in RSVP */
+        .guest-list {
+            margin: 2rem 0;
+        }
+
+        .guest-entry {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 225, 204, 0.1);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            position: relative;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .guest-entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .guest-number {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            color: var(--copper);
+        }
+
+        .remove-guest {
+            background: none;
+            border: none;
+            color: rgba(255, 225, 204, 0.4);
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0.25rem;
+            transition: color 0.3s;
+        }
+
+        .remove-guest:hover {
+            color: var(--copper);
+        }
+
+        .guest-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .guest-row .form-group {
+            margin-bottom: 0.75rem;
+        }
+
+        .add-guest-btn {
+            width: 100%;
+            padding: 0.85rem;
+            border: 1px dashed rgba(255, 225, 204, 0.2);
+            border-radius: 8px;
+            background: transparent;
+            color: var(--blush);
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 2rem;
+        }
+
+        .add-guest-btn:hover {
+            border-color: var(--copper);
+            background: rgba(190, 81, 3, 0.08);
+            color: var(--copper);
+        }
+
+        .attending-toggle {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .attending-toggle button {
+            flex: 1;
+            padding: 0.85rem;
+            border: 1px solid rgba(255, 225, 204, 0.15);
+            border-radius: 6px;
+            background: transparent;
+            color: var(--blush);
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .attending-toggle button.selected {
+            background: var(--emerald);
+            border-color: var(--emerald);
+            color: white;
+        }
+
+        .attending-toggle button:hover:not(.selected) {
+            border-color: var(--copper);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.1rem;
+            border: none;
+            border-radius: 6px;
+            background: linear-gradient(135deg, var(--copper), #d4690f);
+            color: white;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(190, 81, 3, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(190, 81, 3, 0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .rsvp-deadline {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            color: rgba(255, 225, 204, 0.4);
+        }
+
+        .rsvp-success {
+            text-align: center;
+            padding: 3rem;
+            display: none;
+        }
+
+        .rsvp-success h3 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--blush);
+            margin-bottom: 1rem;
+        }
+
+        .rsvp-success p {
+            color: rgba(255, 225, 204, 0.6);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* ═══════════════ FOOTER ═══════════════ */
+        footer {
+            background: var(--dark-forest);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: rgba(255, 225, 204, 0.3);
+            border-top: 1px solid rgba(255, 225, 204, 0.05);
+        }
+
+        .footer-names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            color: var(--blush);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-date {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+        }
+
+        /* ═══════════════ RESPONSIVE ═══════════════ */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(18, 45, 4, 0.97);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                z-index: 150;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links.open a {
+                color: white !important;
+                font-size: 1.1rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                text-align: left !important;
+                padding: 1.5rem 1rem 1.5rem 3.5rem !important;
+            }
+
+            .timeline-dot {
+                left: 14px !important;
+                right: auto !important;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .guest-row {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+        }
+
+        /* ═══════════════ FORM TOAST / NOTIFICATION ═══════════════ */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.85rem;
+            z-index: 9999;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.success {
+            background: var(--emerald);
+            color: white;
+        }
+
+        .toast.error {
+            background: var(--copper);
+            color: white;
+        }
+
+        /* ═══════════════ SUBTLE DECORATIONS ═══════════════ */
+        .leaf-decoration {
+            position: absolute;
+            opacity: 0.04;
+            font-size: 15rem;
+            pointer-events: none;
+            user-select: none;
         }
     </style>
 </head>
 <body>
-    <!-- Language Toggle -->
-    <div class="language-toggle">
-        <button id="btn-en" class="active" onclick="switchLanguage('en')">EN</button>
-        <button id="btn-bg" onclick="switchLanguage('bg')">БГ</button>
-    </div>
+    <!-- ═══════════════ NAVIGATION ═══════════════ -->
+    <nav class="nav" id="navbar">
+        <div class="nav-inner">
+            <div class="lang-toggle">
+                <button class="active" onclick="setLang('en')">EN</button>
+                <button onclick="setLang('bg')">BG</button>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#story" data-en="Our Story" data-bg="Нашата история" onclick="closeMenu()">Our Story</a></li>
+                <li><a href="#program" data-en="Program" data-bg="Програма" onclick="closeMenu()">Program</a></li>
+                <li><a href="#dresscode" data-en="Dress Code" data-bg="Дрескод" onclick="closeMenu()">Dress Code</a></li>
+                <li><a href="#transport" data-en="Getting There" data-bg="Транспорт" onclick="closeMenu()">Getting There</a></li>
+                <li><a href="#menu" data-en="Menu" data-bg="Меню" onclick="closeMenu()">Menu</a></li>
+                <li><a href="#rsvp" data-en="RSVP" data-bg="Потвърждение" onclick="closeMenu()">RSVP</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="hero" id="hero">
         <div class="hero-content">
-            <h1>
-                <span class="lang-en active">We're Getting Married!</span>
-                <span class="lang-bg">Ще се женим!</span>
-            </h1>
-            <!-- <div class="names-en">Victoria & Nikolay</div> -->
-            <div class="lang-en active" style="font-size: 2rem; margin-top: -1rem; margin-bottom: 2rem;">Victoria & Nikolay</div>
-            <div class="lang-bg" style="font-size: 2rem; margin-top: -1rem; margin-bottom: 2rem;">Виктория & Николай</div>
-            <div class="date">29.05.2026</div>
+            <div class="hero-pretext" data-en="We're getting married" data-bg="Ние се женим">We're getting married</div>
+            <h1 class="hero-names">Victoria <span class="hero-ampersand">&</span> Nikolay</h1>
+            <div class="hero-date">29 · 05 · 2026</div>
+            <div class="hero-venue" data-en="Villa Ekaterina · Bulgaria" data-bg="Вила Екатерина · България">Villa Ekaterina · Bulgaria</div>
         </div>
-        <div class="scroll-indicator"></div>
+        <a href="#story" class="hero-scroll">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </a>
     </section>
 
-    <!-- Email Signup Section -->
-    <section class="email-section">
-        <div class="email-container">
-            <h2>
-                <span class="lang-en active">Welcome to the Beginning of Our New Chapter</span>
-                <span class="lang-bg">Добре дошли в началото на нашата нова глава</span>
-            </h2>
-            <div class="decorative-line"></div>
-            <p class="lang-en active">
-                Here you can find any details that you might need so you feel comfortable during our wedding day. Please sign up with your email to receive any updates needed.
-            </p>
-            <p class="lang-bg">
-                Тук можете да намерите всички детайли, от които се нуждаете, за да се чувствате комфортно по време на нашия сватбен ден. Моля, регистрирайте се с имейла си, за да получавате необходимите актуализации.
-            </p>
-            <a href="https://forms.gle/b3qpZgR4UHa4keBM7" target="_blank" class="email-button">
-                <span class="lang-en active-inline">Sign Up for Updates</span>
-                <span class="lang-bg">Регистрирайте се за актуализации</span>
-            </a>
+    <!-- ═══════════════ OUR STORY ═══════════════ -->
+    <section id="story">
+        <div class="section-container">
+            <div class="section-label" data-en="How it all began" data-bg="Как започна всичко">How it all began</div>
+            <h2 class="section-title" data-en="Our Story" data-bg="Нашата история">Our Story</h2>
+            <div class="divider"></div>
+
+            <div class="timeline">
+                <!-- Milestone 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year" data-en="How we met" data-bg="Как се запознахме">How we met</div>
+                    <div class="timeline-heading" data-en="The Beginning" data-bg="Началото">The Beginning</div>
+                    <div class="timeline-text" data-en="This is where your story begins. Replace this with how you two first met — the place, the moment, the spark." data-bg="Тук започва вашата история. Заменете с това как се запознахте — мястото, моментът, искрата.">This is where your story begins. Replace this with how you two first met — the place, the moment, the spark.</div>
+                    <div class="timeline-image-placeholder" data-en="📷 Your photo here" data-bg="📷 Вашата снимка тук">📷 Your photo here</div>
+                </div>
+
+                <!-- Milestone 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year" data-en="First adventures" data-bg="Първи приключения">First adventures</div>
+                    <div class="timeline-heading" data-en="First Trip Together" data-bg="Първото пътуване заедно">First Trip Together</div>
+                    <div class="timeline-text" data-en="Describe your first adventure as a couple — a trip, a shared experience that brought you closer." data-bg="Опишете първото си приключение като двойка — пътуване, споделено преживяване, което ви сближи.">Describe your first adventure as a couple — a trip, a shared experience that brought you closer.</div>
+                    <div class="timeline-image-placeholder" data-en="📷 Your photo here" data-bg="📷 Вашата снимка тук">📷 Your photo here</div>
+                </div>
+
+                <!-- Milestone 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year" data-en="Growing together" data-bg="Растем заедно">Growing together</div>
+                    <div class="timeline-heading" data-en="Moving In" data-bg="Заживяхме заедно">Moving In</div>
+                    <div class="timeline-text" data-en="The moment you decided to share a home — a big step that made everything feel more real." data-bg="Моментът, в който решихте да споделите дом — голяма стъпка, която направи всичко по-истинско.">The moment you decided to share a home — a big step that made everything feel more real.</div>
+                    <div class="timeline-image-placeholder" data-en="📷 Your photo here" data-bg="📷 Вашата снимка тук">📷 Your photo here</div>
+                </div>
+
+                <!-- Milestone 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year" data-en="A special moment" data-bg="Специален момент">A special moment</div>
+                    <div class="timeline-heading" data-en="Our Furry Friend" data-bg="Нашият пухкав приятел">Our Furry Friend</div>
+                    <div class="timeline-text" data-en="Did you adopt a pet? Share a hobby? Another milestone that's special to your journey." data-bg="Осиновихте ли домашен любимец? Споделяте хоби? Друг важен момент от пътя ви.">Did you adopt a pet? Share a hobby? Another milestone that's special to your journey.</div>
+                    <div class="timeline-image-placeholder" data-en="📷 Your photo here" data-bg="📷 Вашата снимка тук">📷 Your photo here</div>
+                </div>
+
+                <!-- Milestone 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year" data-en="Adventures abroad" data-bg="Приключения навън">Adventures abroad</div>
+                    <div class="timeline-heading" data-en="Travels & Memories" data-bg="Пътешествия и спомени">Travels & Memories</div>
+                    <div class="timeline-text" data-en="A favourite trip or a collection of moments from your travels together." data-bg="Любимо пътуване или колекция от моменти от пътешествията ви заедно.">A favourite trip or a collection of moments from your travels together.</div>
+                    <div class="timeline-image-placeholder" data-en="📷 Your photo here" data-bg="📷 Вашата снимка тук">📷 Your photo here</div>
+                </div>
+
+                <!-- Milestone 6 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year" data-en="The question" data-bg="Въпросът">The question</div>
+                    <div class="timeline-heading" data-en="The Proposal" data-bg="Предложението">The Proposal</div>
+                    <div class="timeline-text" data-en="The moment that changed everything — how, where, and the joy that followed." data-bg="Моментът, който промени всичко — как, къде и радостта, която последва.">The moment that changed everything — how, where, and the joy that followed.</div>
+                    <div class="timeline-image-placeholder" data-en="📷 Your photo here" data-bg="📷 Вашата снимка тук">📷 Your photo here</div>
+                </div>
+
+                <!-- Milestone 7 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year" data-en="29.05.2026" data-bg="29.05.2026">29.05.2026</div>
+                    <div class="timeline-heading" data-en="Our Wedding Day" data-bg="Нашият сватбен ден">Our Wedding Day</div>
+                    <div class="timeline-text" data-en="And now we celebrate the beginning of forever — with all of you by our side." data-bg="И сега празнуваме началото на завинаги — с всички вас до нас.">And now we celebrate the beginning of forever — with all of you by our side.</div>
+                    <div class="timeline-image-placeholder" data-en="📷 Your photo here" data-bg="📷 Вашата снимка тук">📷 Your photo here</div>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- ═══════════════ PROGRAM ═══════════════ -->
+    <section id="program">
+        <div class="section-container">
+            <div class="section-label" data-en="29 May 2026" data-bg="29 Май 2026">29 May 2026</div>
+            <h2 class="section-title" data-en="The Celebration" data-bg="Празненството">The Celebration</h2>
+            <div class="section-subtitle" data-en="An evening of love, laughter and dancing at Villa Ekaterina" data-bg="Вечер на любов, смях и танци във Вила Екатерина">An evening of love, laughter and dancing at Villa Ekaterina</div>
+            <div class="divider"></div>
+
+            <div class="schedule-grid">
+                <div class="schedule-item">
+                    <div class="schedule-time">17:00</div>
+                    <div class="schedule-icon">🥂</div>
+                    <div class="schedule-details">
+                        <h3 data-en="Welcome Drinks" data-bg="Коктейл добре дошли">Welcome Drinks</h3>
+                        <p data-en="Join us for a refreshing welcome cocktail as we gather together" data-bg="Елате на освежаващ коктейл, докато се събираме заедно">Join us for a refreshing welcome cocktail as we gather together</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">17:30</div>
+                    <div class="schedule-icon">💒</div>
+                    <div class="schedule-details">
+                        <h3 data-en="The Ceremony" data-bg="Церемонията">The Ceremony</h3>
+                        <p data-en="The moment we say 'I do' — please be seated by 17:20" data-bg="Моментът, в който казваме „Да" — моля, заемете местата си до 17:20">The moment we say 'I do' — please be seated by 17:20</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">18:00</div>
+                    <div class="schedule-icon">📸</div>
+                    <div class="schedule-details">
+                        <h3 data-en="Congratulations & Photos" data-bg="Поздравления и снимки">Congratulations & Photos</h3>
+                        <p data-en="Hugs, kisses, and group photos with our loved ones" data-bg="Прегръдки, целувки и групови снимки с любимите ни хора">Hugs, kisses, and group photos with our loved ones</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">19:30</div>
+                    <div class="schedule-icon">🍽️</div>
+                    <div class="schedule-details">
+                        <h3 data-en="Dinner" data-bg="Вечеря">Dinner</h3>
+                        <p data-en="A carefully curated dinner to share and enjoy" data-bg="Внимателно подготвена вечеря за споделяне и наслада">A carefully curated dinner to share and enjoy</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">22:30</div>
+                    <div class="schedule-icon">🎂</div>
+                    <div class="schedule-details">
+                        <h3 data-en="Wedding Cake" data-bg="Сватбена торта">Wedding Cake</h3>
+                        <p data-en="Time for something sweet — the cutting of the cake" data-bg="Време за нещо сладко — разрязване на тортата">Time for something sweet — the cutting of the cake</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">23:00</div>
+                    <div class="schedule-icon">🎶</div>
+                    <div class="schedule-details">
+                        <h3 data-en="Party Time!" data-bg="Парти!">Party Time!</h3>
+                        <p data-en="Dance the night away — the celebration continues!" data-bg="Танцувайте до зори — празненството продължава!">Dance the night away — the celebration continues!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ DRESS CODE ═══════════════ -->
+    <section id="dresscode">
+        <div class="section-container">
+            <div class="section-label" data-en="What to wear" data-bg="Какво да облечете">What to wear</div>
+            <h2 class="section-title" data-en="Dress Code" data-bg="Дрескод">Dress Code</h2>
+            <div class="divider"></div>
+
+            <div class="dresscode-content">
+                <p class="dresscode-description" data-en="Our wedding is a formal celebration. We kindly ask our guests to dress elegantly, drawing inspiration from the colour palette of our wedding." data-bg="Нашата сватба е официално тържество. Любезно молим гостите ни да се облекат елегантно, вдъхновени от цветовата палитра на сватбата ни.">Our wedding is a formal celebration. We kindly ask our guests to dress elegantly, drawing inspiration from the colour palette of our wedding.</p>
+
+                <div class="color-palette">
+                    <div class="color-swatch" style="background: #122d04;">
+                        <span class="tooltip" data-en="Dark Forest" data-bg="Тъмно зелено">Dark Forest</span>
+                    </div>
+                    <div class="color-swatch" style="background: #00674f;">
+                        <span class="tooltip" data-en="Emerald" data-bg="Изумруд">Emerald</span>
+                    </div>
+                    <div class="color-swatch" style="background: #be5103;">
+                        <span class="tooltip" data-en="Copper" data-bg="Меден">Copper</span>
+                    </div>
+                    <div class="color-swatch" style="background: #ffe1cc;">
+                        <span class="tooltip" data-en="Blush" data-bg="Руменина">Blush</span>
+                    </div>
+                    <div class="color-swatch" style="background: #fff7f7; border: 1px solid #e0d5d5;">
+                        <span class="tooltip" data-en="Cream" data-bg="Кремав">Cream</span>
+                    </div>
+                </div>
+
+                <div class="dresscode-forbidden">
+                    <span class="forbidden-x">✕</span>
+                    <span data-en="Please avoid wearing white or ivory — reserved for the bride" data-bg="Моля, избягвайте бяло или слонова кост — запазено за булката">Please avoid wearing white or ivory — reserved for the bride</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ TRANSPORT ═══════════════ -->
+    <section id="transport">
+        <div class="section-container">
+            <div class="section-label" data-en="Logistics" data-bg="Логистика">Logistics</div>
+            <h2 class="section-title" data-en="Getting There" data-bg="Как да стигнете">Getting There</h2>
+            <div class="section-subtitle" data-en="We've arranged transportation so you can relax and enjoy the day" data-bg="Организирахме транспорт, за да можете да се отпуснете и да се насладите на деня">We've arranged transportation so you can relax and enjoy the day</div>
+            <div class="divider"></div>
+
+            <div class="transport-cards">
+                <div class="transport-card">
+                    <div class="transport-card-icon">🚌</div>
+                    <h3 data-en="Bus to Villa Ekaterina" data-bg="Автобус до Вила Екатерина">Bus to Villa Ekaterina</h3>
+                    <p data-en="A bus will depart from Alexander Nevski Cathedral to take you directly to the venue." data-bg="Автобус ще тръгне от катедрала Александър Невски директно до мястото на събитието.">A bus will depart from Alexander Nevski Cathedral to take you directly to the venue.</p>
+                    <span class="transport-time" data-en="Departure: 16:00" data-bg="Тръгване: 16:00">Departure: 16:00</span>
+                </div>
+
+                <div class="transport-card">
+                    <div class="transport-card-icon">🚐</div>
+                    <h3 data-en="Shuttle Back to Sofia" data-bg="Шатъл обратно до София">Shuttle Back to Sofia</h3>
+                    <p data-en="Two shuttles will be available to take you back to Sofia at the end of the evening." data-bg="Два шатъла ще бъдат на разположение, за да ви отведат обратно до София в края на вечерта.">Two shuttles will be available to take you back to Sofia at the end of the evening.</p>
+                    <span class="transport-time" data-en="Departures: 00:30 & 02:00" data-bg="Тръгване: 00:30 и 02:00">Departures: 00:30 & 02:00</span>
+                </div>
+
+                <div class="transport-card">
+                    <div class="transport-card-icon">📍</div>
+                    <h3 data-en="Venue Location" data-bg="Местоположение">Venue Location</h3>
+                    <p data-en="Villa Ekaterina is located just outside Sofia, surrounded by beautiful nature." data-bg="Вила Екатерина се намира точно извън София, заобиколена от красива природа.">Villa Ekaterina is located just outside Sofia, surrounded by beautiful nature.</p>
+                    <a href="https://maps.google.com/?q=Villa+Ekaterina+Bulgaria" target="_blank" 
+                       style="display:inline-block; margin-top:0.75rem; font-family:'Josefin Sans',sans-serif; font-size:0.75rem; letter-spacing:0.1em; color:var(--emerald); text-decoration:none; border-bottom:1px solid var(--emerald);"
+                       data-en="View on Google Maps →" data-bg="Виж в Google Maps →">View on Google Maps →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ MENU ═══════════════ -->
+    <section id="menu">
+        <div class="section-container">
+            <div class="section-label" data-en="Dining" data-bg="Вечеря">Dining</div>
+            <h2 class="section-title" data-en="The Menu" data-bg="Менюто">The Menu</h2>
+            <div class="section-subtitle" data-en="Guests will choose their preferred menu when confirming attendance" data-bg="Гостите ще изберат предпочитаното си меню при потвърждаване на присъствието">Guests will choose their preferred menu when confirming attendance</div>
+            <div class="divider"></div>
+
+            <div class="menu-grid">
+                <div class="menu-card classic">
+                    <div class="menu-card-label" data-en="Option A" data-bg="Вариант А">Option A</div>
+                    <h3 data-en="Classic Menu" data-bg="Класическо меню">Classic Menu</h3>
+
+                    <div class="menu-course">
+                        <div class="menu-course-label" data-en="Starter" data-bg="Предястие">Starter</div>
+                        <div class="menu-course-name" data-en="Placeholder — your starter dish here" data-bg="Placeholder — вашето предястие тук">Placeholder — your starter dish here</div>
+                    </div>
+                    <div class="menu-course">
+                        <div class="menu-course-label" data-en="Main Course" data-bg="Основно ястие">Main Course</div>
+                        <div class="menu-course-name" data-en="Placeholder — your main course here" data-bg="Placeholder — вашето основно ястие тук">Placeholder — your main course here</div>
+                    </div>
+                    <div class="menu-course">
+                        <div class="menu-course-label" data-en="Dessert" data-bg="Десерт">Dessert</div>
+                        <div class="menu-course-name" data-en="Placeholder — your dessert here" data-bg="Placeholder — вашият десерт тук">Placeholder — your dessert here</div>
+                    </div>
+                </div>
+
+                <div class="menu-card vegan">
+                    <div class="menu-card-label" data-en="Option B" data-bg="Вариант Б">Option B</div>
+                    <h3 data-en="Vegan Menu" data-bg="Веган меню">Vegan Menu</h3>
+
+                    <div class="menu-course">
+                        <div class="menu-course-label" data-en="Starter" data-bg="Предястие">Starter</div>
+                        <div class="menu-course-name" data-en="Placeholder — your vegan starter here" data-bg="Placeholder — вашето веган предястие тук">Placeholder — your vegan starter here</div>
+                    </div>
+                    <div class="menu-course">
+                        <div class="menu-course-label" data-en="Main Course" data-bg="Основно ястие">Main Course</div>
+                        <div class="menu-course-name" data-en="Placeholder — your vegan main course here" data-bg="Placeholder — вашето веган основно ястие тук">Placeholder — your vegan main course here</div>
+                    </div>
+                    <div class="menu-course">
+                        <div class="menu-course-label" data-en="Dessert" data-bg="Десерт">Dessert</div>
+                        <div class="menu-course-name" data-en="Placeholder — your vegan dessert here" data-bg="Placeholder — вашият веган десерт тук">Placeholder — your vegan dessert here</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ RSVP ═══════════════ -->
+    <section id="rsvp">
+        <div class="section-container">
+            <div class="section-label" data-en="Will you join us?" data-bg="Ще бъдете ли с нас?">Will you join us?</div>
+            <h2 class="section-title" data-en="RSVP" data-bg="Потвърдете присъствие">RSVP</h2>
+            <div class="section-subtitle" data-en="Please let us know if you'll celebrate with us" data-bg="Моля, уведомете ни дали ще празнувате с нас">Please let us know if you'll celebrate with us</div>
+            <div class="divider" style="background: var(--copper);"></div>
+
+            <!-- RSVP Form -->
+            <div class="rsvp-form" id="rsvpForm">
+                <!-- Attending toggle -->
+                <div class="form-group">
+                    <label data-en="Will you be attending?" data-bg="Ще присъствате ли?">Will you be attending?</label>
+                    <div class="attending-toggle">
+                        <button type="button" onclick="setAttending(true, this)" data-en="Joyfully Accept" data-bg="С радост приемам">Joyfully Accept</button>
+                        <button type="button" onclick="setAttending(false, this)" data-en="Regretfully Decline" data-bg="За съжаление отказвам">Regretfully Decline</button>
+                    </div>
+                </div>
+
+                <!-- Main guest info -->
+                <div id="attendingSection" style="display:none;">
+                    <div class="form-group">
+                        <label data-en="Your Full Name" data-bg="Вашето пълно име">Your Full Name</label>
+                        <input type="text" id="mainGuestName" placeholder="..." />
+                    </div>
+
+                    <div class="form-group">
+                        <label data-en="Email" data-bg="Имейл">Email</label>
+                        <input type="email" id="mainGuestEmail" placeholder="..." />
+                    </div>
+
+                    <div class="form-group">
+                        <label data-en="Phone" data-bg="Телефон">Phone</label>
+                        <input type="tel" id="mainGuestPhone" placeholder="..." />
+                    </div>
+
+                    <div class="form-group">
+                        <label data-en="Your Menu Preference" data-bg="Предпочитание за меню">Your Menu Preference</label>
+                        <select id="mainGuestMenu">
+                            <option value="" data-en="Choose menu..." data-bg="Изберете меню...">Choose menu...</option>
+                            <option value="classic" data-en="Classic Menu" data-bg="Класическо меню">Classic Menu</option>
+                            <option value="vegan" data-en="Vegan Menu" data-bg="Веган меню">Vegan Menu</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label data-en="Will you use the bus from Sofia? (Departure 16:00 from Alexander Nevski)" data-bg="Ще ползвате ли автобуса от София? (Тръгване 16:00 от Александър Невски)">Will you use the bus from Sofia? (Departure 16:00 from Alexander Nevski)</label>
+                        <select id="mainGuestBus">
+                            <option value="" data-en="Select..." data-bg="Изберете...">Select...</option>
+                            <option value="yes" data-en="Yes, I'll take the bus" data-bg="Да, ще взема автобуса">Yes, I'll take the bus</option>
+                            <option value="no" data-en="No, I'll get there on my own" data-bg="Не, ще стигна сам/а">No, I'll get there on my own</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label data-en="Will you use the shuttle back to Sofia?" data-bg="Ще ползвате ли шатъла обратно до София?">Will you use the shuttle back to Sofia?</label>
+                        <select id="mainGuestShuttle">
+                            <option value="" data-en="Select..." data-bg="Изберете...">Select...</option>
+                            <option value="00:30" data-en="Yes — 00:30 shuttle" data-bg="Да — шатъл в 00:30">Yes — 00:30 shuttle</option>
+                            <option value="02:00" data-en="Yes — 02:00 shuttle" data-bg="Да — шатъл в 02:00">Yes — 02:00 shuttle</option>
+                            <option value="no" data-en="No, I'll arrange my own transport" data-bg="Не, ще си организирам транспорт">No, I'll arrange my own transport</option>
+                        </select>
+                    </div>
+
+                    <!-- Additional Guests -->
+                    <div class="form-group">
+                        <label data-en="Additional Guests" data-bg="Допълнителни гости">Additional Guests</label>
+                    </div>
+
+                    <div class="guest-list" id="guestList">
+                        <!-- Dynamic guest entries will be added here -->
+                    </div>
+
+                    <button class="add-guest-btn" onclick="addGuest()" data-en="+ Add Another Guest" data-bg="+ Добави още гост">+ Add Another Guest</button>
+
+                    <div class="form-group">
+                        <label data-en="Anything else we should know?" data-bg="Нещо друго, което трябва да знаем?">Anything else we should know?</label>
+                        <textarea id="notes" rows="3" style="resize:vertical;" placeholder="..."></textarea>
+                    </div>
+
+                    <button class="submit-btn" onclick="submitRSVP()" data-en="Send RSVP" data-bg="Изпрати потвърждение">Send RSVP</button>
+                </div>
+
+                <!-- Decline section -->
+                <div id="decliningSection" style="display:none;">
+                    <div class="form-group">
+                        <label data-en="Your Full Name" data-bg="Вашето пълно име">Your Full Name</label>
+                        <input type="text" id="declineName" placeholder="..." />
+                    </div>
+                    <div class="form-group">
+                        <label data-en="Send us a message (optional)" data-bg="Изпратете ни съобщение (по избор)">Send us a message (optional)</label>
+                        <textarea id="declineMessage" rows="3" style="resize:vertical;" placeholder="..."></textarea>
+                    </div>
+                    <button class="submit-btn" onclick="submitDecline()" data-en="Send Response" data-bg="Изпрати отговор">Send Response</button>
+                </div>
+
+                <div class="rsvp-deadline" data-en="Please respond by May 1, 2026" data-bg="Моля, потвърдете до 1 май 2026">Please respond by May 1, 2026</div>
+            </div>
+
+            <!-- Success Message -->
+            <div class="rsvp-success" id="rsvpSuccess">
+                <h3 data-en="Thank You!" data-bg="Благодарим!">Thank You!</h3>
+                <p data-en="We've received your response and can't wait to celebrate with you!" data-bg="Получихме отговора ви и нямаме търпение да празнуваме с вас!">We've received your response and can't wait to celebrate with you!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer>
+        <div class="footer-names">Victoria & Nikolay</div>
+        <div class="footer-date">29 · 05 · 2026</div>
+    </footer>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast"></div>
 
     <script>
-        function switchLanguage(lang) {
-            // Remove active class from all language elements
-            document.querySelectorAll('.lang-en, .lang-bg').forEach(el => {
-                el.classList.remove('active', 'active-inline');
+        // ═══════════════ LANGUAGE SYSTEM ═══════════════
+        let currentLang = 'en';
+
+        function setLang(lang) {
+            currentLang = lang;
+            document.querySelectorAll('.lang-toggle button').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.trim() === lang.toUpperCase());
             });
 
-            // Add active class to selected language
-            if (lang === 'en') {
-                document.querySelectorAll('.lang-en').forEach(el => {
-                    if (el.style.display === 'inline' || el.parentElement.style.display === 'inline' || el.classList.contains('email-button') || el.parentElement.classList.contains('email-button')) {
-                        el.classList.add('active-inline');
-                    } else {
-                        el.classList.add('active');
+            // Update all translatable elements
+            document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+                const text = el.getAttribute('data-' + lang);
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    // Don't overwrite user input
+                } else if (el.tagName === 'OPTION') {
+                    el.textContent = text;
+                } else if (el.children.length === 0 || el.classList.contains('hero-pretext') || el.classList.contains('hero-venue')) {
+                    el.textContent = text;
+                } else if (el.hasAttribute('data-en') && el.childNodes.length > 0) {
+                    // For elements with mixed content, update text nodes only
+                    el.childNodes.forEach(node => {
+                        if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+                            // Skip
+                        }
+                    });
+                    // Simple replacement for leaf-text elements
+                    if (!el.querySelector('[data-en]')) {
+                        el.textContent = text;
                     }
-                });
-                document.getElementById('btn-en').classList.add('active');
-                document.getElementById('btn-bg').classList.remove('active');
-            } else {
-                document.querySelectorAll('.lang-bg').forEach(el => {
-                    if (el.style.display === 'inline' || el.parentElement.style.display === 'inline' || el.classList.contains('email-button') || el.parentElement.classList.contains('email-button')) {
-                        el.classList.add('active-inline');
-                    } else {
-                        el.classList.add('active');
-                    }
-                });
-                document.getElementById('btn-bg').classList.add('active');
-                document.getElementById('btn-en').classList.remove('active');
-            }
+                }
+            });
 
-            // Save preference
-            localStorage.setItem('preferredLanguage', lang);
+            // Special handling for hero names (don't translate names)
+            // Update guest entry labels
+            updateGuestLabels();
         }
 
-        // Load saved language preference
-        window.addEventListener('load', () => {
-            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
-            switchLanguage(savedLang);
+        function updateGuestLabels() {
+            document.querySelectorAll('.guest-number').forEach((el, i) => {
+                el.textContent = currentLang === 'bg' 
+                    ? `ГОСТ ${i + 1}` 
+                    : `GUEST ${i + 1}`;
+            });
+        }
+
+        // ═══════════════ NAVIGATION ═══════════════
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 80);
+        });
+
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+
+        function closeMenu() {
+            document.getElementById('navLinks').classList.remove('open');
+        }
+
+        // ═══════════════ SCROLL ANIMATIONS ═══════════════
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.timeline-item, .schedule-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ═══════════════ RSVP LOGIC ═══════════════
+        let isAttending = null;
+        let guestCount = 0;
+
+        function setAttending(attending, btn) {
+            isAttending = attending;
+            btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+
+            document.getElementById('attendingSection').style.display = attending ? 'block' : 'none';
+            document.getElementById('decliningSection').style.display = attending ? 'none' : 'block';
+        }
+
+        function addGuest() {
+            guestCount++;
+            const guestList = document.getElementById('guestList');
+            const entry = document.createElement('div');
+            entry.className = 'guest-entry';
+            entry.id = `guest-${guestCount}`;
+
+            const guestLabel = currentLang === 'bg' ? 'ГОСТ' : 'GUEST';
+            const nameLabel = currentLang === 'bg' ? 'Име' : 'Full Name';
+            const menuLabel = currentLang === 'bg' ? 'Меню' : 'Menu';
+            const chooseLbl = currentLang === 'bg' ? 'Изберете меню...' : 'Choose menu...';
+            const classicLbl = currentLang === 'bg' ? 'Класическо меню' : 'Classic Menu';
+            const veganLbl = currentLang === 'bg' ? 'Веган меню' : 'Vegan Menu';
+
+            entry.innerHTML = `
+                <div class="guest-entry-header">
+                    <span class="guest-number">${guestLabel} ${guestCount}</span>
+                    <button class="remove-guest" onclick="removeGuest('guest-${guestCount}')" title="Remove">✕</button>
+                </div>
+                <div class="guest-row">
+                    <div class="form-group">
+                        <label>${nameLabel}</label>
+                        <input type="text" class="guest-name" placeholder="..." />
+                    </div>
+                    <div class="form-group">
+                        <label>${menuLabel}</label>
+                        <select class="guest-menu">
+                            <option value="">${chooseLbl}</option>
+                            <option value="classic">${classicLbl}</option>
+                            <option value="vegan">${veganLbl}</option>
+                        </select>
+                    </div>
+                </div>
+            `;
+            guestList.appendChild(entry);
+        }
+
+        function removeGuest(id) {
+            document.getElementById(id).remove();
+            // Re-number guests
+            document.querySelectorAll('.guest-entry').forEach((entry, i) => {
+                const label = currentLang === 'bg' ? 'ГОСТ' : 'GUEST';
+                entry.querySelector('.guest-number').textContent = `${label} ${i + 1}`;
+            });
+        }
+
+        // ═══════════════ FORM SUBMISSION ═══════════════
+        function collectFormData() {
+            const mainGuest = {
+                name: document.getElementById('mainGuestName').value.trim(),
+                email: document.getElementById('mainGuestEmail').value.trim(),
+                phone: document.getElementById('mainGuestPhone').value.trim(),
+                menu: document.getElementById('mainGuestMenu').value,
+                bus: document.getElementById('mainGuestBus').value,
+                shuttle: document.getElementById('mainGuestShuttle').value
+            };
+
+            const additionalGuests = [];
+            document.querySelectorAll('.guest-entry').forEach(entry => {
+                const name = entry.querySelector('.guest-name').value.trim();
+                const menu = entry.querySelector('.guest-menu').value;
+                if (name) {
+                    additionalGuests.push({ name, menu });
+                }
+            });
+
+            return {
+                attending: true,
+                mainGuest,
+                additionalGuests,
+                notes: document.getElementById('notes').value.trim(),
+                totalGuests: 1 + additionalGuests.length,
+                submittedAt: new Date().toISOString()
+            };
+        }
+
+        function submitRSVP() {
+            const data = collectFormData();
+
+            // Validate
+            if (!data.mainGuest.name) {
+                showToast(currentLang === 'bg' ? 'Моля, въведете името си' : 'Please enter your name', 'error');
+                return;
+            }
+            if (!data.mainGuest.email) {
+                showToast(currentLang === 'bg' ? 'Моля, въведете имейл' : 'Please enter your email', 'error');
+                return;
+            }
+            if (!data.mainGuest.menu) {
+                showToast(currentLang === 'bg' ? 'Моля, изберете меню' : 'Please select a menu', 'error');
+                return;
+            }
+
+            // Check additional guests have menu selected
+            let guestsValid = true;
+            document.querySelectorAll('.guest-entry').forEach(entry => {
+                const name = entry.querySelector('.guest-name').value.trim();
+                const menu = entry.querySelector('.guest-menu').value;
+                if (name && !menu) {
+                    guestsValid = false;
+                }
+            });
+
+            if (!guestsValid) {
+                showToast(currentLang === 'bg' ? 'Моля, изберете меню за всеки гост' : 'Please select a menu for each guest', 'error');
+                return;
+            }
+
+            console.log('RSVP Data:', JSON.stringify(data, null, 2));
+
+            // ═══════════════════════════════════════════════
+            // TODO: Replace with your actual backend endpoint
+            // Options:
+            //   1. Google Apps Script Web App (writes to Google Sheets)
+            //   2. Your own API endpoint
+            //   3. A service like Formspree, Getform, etc.
+            //
+            // Example with Google Apps Script:
+            // fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
+            //     method: 'POST',
+            //     body: JSON.stringify(data),
+            //     headers: { 'Content-Type': 'text/plain' }
+            // })
+            // ═══════════════════════════════════════════════
+
+            // For now, simulate success
+            showSuccess();
+        }
+
+        function submitDecline() {
+            const name = document.getElementById('declineName').value.trim();
+            if (!name) {
+                showToast(currentLang === 'bg' ? 'Моля, въведете името си' : 'Please enter your name', 'error');
+                return;
+            }
+
+            const data = {
+                attending: false,
+                name,
+                message: document.getElementById('declineMessage').value.trim(),
+                submittedAt: new Date().toISOString()
+            };
+
+            console.log('Decline Data:', JSON.stringify(data, null, 2));
+
+            // TODO: Same backend endpoint as above
+            showSuccess();
+        }
+
+        function showSuccess() {
+            document.getElementById('rsvpForm').style.display = 'none';
+            document.getElementById('rsvpSuccess').style.display = 'block';
+            showToast(currentLang === 'bg' ? 'Отговорът ви е изпратен!' : 'Your response has been sent!', 'success');
+        }
+
+        function showToast(message, type) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast ${type} show`;
+            setTimeout(() => { toast.classList.remove('show'); }, 3500);
+        }
+
+        // ═══════════════ SMOOTH SCROLL FIX FOR FIXED NAV ═══════════════
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 60;
+                    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
         });
     </script>
 </body>
