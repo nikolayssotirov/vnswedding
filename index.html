@@ -1770,10 +1770,17 @@
                 const menu = entry.querySelector('.guest-menu').value;
                 const allergies = entry.querySelector('.guest-allergies') ? entry.querySelector('.guest-allergies').value.trim() : '';
                 if (name) {
-                    additionalGuests.push({ name, menu, allergies });
+                    additionalGuests.push({ 
+                        name, 
+                        menu, 
+                        allergies,
+                        phone: document.getElementById('phone').value.trim(),
+                        bus: document.getElementById('bus').value,
+                        shuttle: document.getElementById('shuttle').value
+                    });
                 }
             });
-
+            
             return {
                 attending: true,
                 mainGuest,
