@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Victoria & Nikolay — 29.05.2026</title>
+        <title>Victoria & Nikolay - 29.05.2026</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Josefin+Sans:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
         <style>
@@ -429,7 +429,24 @@
                 display: inline-block;
             }
 
-            .timeline-image-placeholder {
+            .timeline-image-vertical img{
+                width: 100%;
+                height: 100%;
+                max-width: 280px;
+                /* height: 210px; */
+                border-radius: 4px;
+                margin-top: 1rem;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(135deg, var(--blush) 0%, var(--cream) 100%);
+                border: 1px dashed var(--copper);
+                color: var(--text-light);
+                font-style: italic;
+                font-size: 0.9rem;
+            }
+
+            .timeline-image img {
                 width: 100%;
                 max-width: 280px;
                 height: 200px;
@@ -444,7 +461,6 @@
                 font-style: italic;
                 font-size: 0.9rem;
             }
-
             /* ═══════════════ PROGRAM / SCHEDULE ═══════════════ */
             #program {
                 background: var(--cream);
@@ -1212,17 +1228,38 @@
                         <div class="timeline-dot"></div>
                         <div class="timeline-year" data-en="How we met" data-bg="Как се запознахме">How we met</div>
                         <div class="timeline-heading" data-en="The Beginning" data-bg="Началото">The Beginning</div>
-                        <div class="timeline-text" data-en="This is where your story begins. Replace this with how you two first met — the place, the moment, the spark." data-bg="Тук започна нашата история.">This is where your story begins. Replace this with how you two first met — the place, the moment, the spark.</div>
-                        <div class="timeline-image-placeholder" data-en="📷 Your photo here" data-bg="📷 Вашата снимка тук">📷 Your photo here</div>
+                        <div class="timeline-text" data-en="It all started 2019 at ScaleFocus – with a handshake and a feeling we couldn't explain. It turned out that sometimes the heart knows before we do." data-bg="Всичко започна в СкейлФокус през 2019та – с едно здрависване и усещане, което не можехме да обясним. Оказа се, че понякога сърцето знае преди нас.">It all started 2019 at ScaleFocus – with a handshake and a feeling we couldn't explain. It turned out that sometimes the heart knows before we do.</div>
+                        <div class="timeline-image">
+                            <img src="images/how-we-met.jpg" alt="How we met">
+                        </div>
                     </div>
 
                     <!-- Milestone 2 -->
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <div class="timeline-year" data-en="First adventures" data-bg="Първи приключения">First adventures</div>
-                        <div class="timeline-heading" data-en="First Trip Together" data-bg="Първото пътуване заедно">First Trip Together</div>
-                        <div class="timeline-text" data-en="Describe your first adventure as a couple — a trip, a shared experience that brought you closer." data-bg="Опишете първото си приключение като двойка — пътуване, споделено преживяване, което Ви сближи.">Describe your first adventure as a couple — a trip, a shared experience that brought you closer.</div>
-                        <div class="timeline-image-placeholder" data-en="📷 Your photo here" data-bg="📷 Вашата снимка тук">📷 Your photo here</div>
+                        <div class="timeline-year" data-en="First adventure" data-bg="Първи приключения">First adventures</div>
+                        <div class="timeline-heading" data-en="First Trip Together after Covid" data-bg="Първото пътуване заедно след Ковид">First Trip Together after Covid</div>
+                        <div class="timeline-text" data-en="After months of long-distance conversations, I simply decided to go to Burgas. We wandered along the seaside as ‘just friends,’ without promises - but deep down, we both knew it wasn’t that simple." 
+                                    data-bg="След месеци разговори от разстояние реших просто да отида в Бургас. Обиколихме морето като просто ‘приятели’, без обещания - но вече знаехме, че не е толкова просто."> 
+                            After months of long-distance conversations, I simply decided to go to Burgas. We wandered along the seaside as ‘just friends,’ without promises - but deep down, we both knew it wasn’t that simple. </div>
+                        <div class="timeline-image-vertical">
+                            <img src="images/first-trip-as-a-couple.jpg" alt="trip">
+                        </div>
+                    </div>
+
+                    <!-- Milestone 2.1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year" data-en="Growing together" data-bg="Растем заедно">Growing together</div>
+                        <div class="timeline-heading" data-en="When you and me became we" data-bg="Когато аз и ти стана ние">When you and me became we</div>
+                        <div class="timeline-text" 
+                            data-en="A few weeks later, one weekend in Velingrad made everything feel natural. No big words, no official declarations - from September 11th, 2020, we were simply ‘us.’" 
+                            data-bg="Няколко седмици по-късно един уикенд във Велинград направи всичко естествено. Без големи думи, без официалности - от 11 септември 2020 просто бяхме ‘ние’.">
+                            A few weeks later, one weekend in Velingrad made everything feel natural. No big words, no official declarations - from September 11th, 2020, we were simply ‘us.’
+                        </div>
+                        <div class="timeline-image-vertical">
+                            <img src="images/gadjenca.jpg" alt="gadjenca">
+                        </div>
                     </div>
 
                     <!-- Milestone 3 -->
@@ -1230,8 +1267,14 @@
                         <div class="timeline-dot"></div>
                         <div class="timeline-year" data-en="Growing together" data-bg="Растем заедно">Growing together</div>
                         <div class="timeline-heading" data-en="Moving In" data-bg="Заживяхме заедно">Moving In</div>
-                        <div class="timeline-text" data-en="The moment you decided to share a home — a big step that made everything feel more real." data-bg="Моментът, в който решихте да споделите дом — голяма стъпка, която направи всичко по-истинско.">The moment you decided to share a home — a big step that made everything feel more real.</div>
-                        <div class="timeline-image-placeholder" data-en="📷 Your photo here" data-bg="📷 Вашата снимка тук">📷 Your photo here</div>
+                        <div class="timeline-text" 
+                            data-en="Moving in together was a process too. Little by little, step by step, after months of ‘I’m just staying for a few days,’ by the beginning of summer 2023 his home had officially become ours." 
+                            data-bg="Да заживеем заедно също беше процес. Малко по малко, стъпка по стъпка, след месеци 'идвам за няколки дни', в началото на лято 2023 неговият дом стана официално нашият.">
+                            Moving in together was a process too. Little by little, step by step, after months of ‘I’m just staying for a few days,’ by the beginning of summer 2023 his home had officially become ours.
+                        </div>
+                        <div class="timeline-image">
+                            <img src="images/living-together.jpg" alt="living-together">
+                        </div>
                     </div>
 
                     <!-- Milestone 4 -->
@@ -1239,17 +1282,28 @@
                         <div class="timeline-dot"></div>
                         <div class="timeline-year" data-en="A special moment" data-bg="Специален момент">A special moment</div>
                         <div class="timeline-heading" data-en="Our Furry Friend" data-bg="Нашият пухкав приятел">Our Furry Friend</div>
-                        <div class="timeline-text" data-en="Did you adopt a pet? Share a hobby? Another milestone that's special to your journey." data-bg="Осиновихте ли домашен любимец? Споделяте хоби? Друг важен момент от пътя ви.">Did you adopt a pet? Share a hobby? Another milestone that's special to your journey.</div>
-                        <div class="timeline-image-placeholder" data-en="📷 Your photo here" data-bg="📷 Вашата снимка тук">📷 Your photo here</div>
-                    </div>
+                        <div class="timeline-text" 
+                            data-en="Life sometimes gave us unpleasant surprises, but it always made up for them with something wonderful — our little princess Amy, the third member of our still-small family." 
+                            data-bg="Животът ни поднасяше неприятни изненади, но винаги се реваншираше с нещо прекрасно - нашата малка принцеса Ейми, третият член на нашето все още малко семейство.">
+                            Life sometimes gave us unpleasant surprises, but it always made up for them with something wonderful — our little princess Amy, the third member of our still-small family.</div>
+                        <div class="timeline-image-vertical">
+                            <img src="images/amy.jpg" alt="Amy">
+                        </div>
+                        </div>
 
                     <!-- Milestone 5 -->
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <div class="timeline-year" data-en="Adventures abroad" data-bg="Приключения навън">Adventures abroad</div>
+                        <div class="timeline-year" data-en="Adventures abroad" data-bg="Приключения отвъд граници">Adventures abroad</div>
                         <div class="timeline-heading" data-en="Travels & Memories" data-bg="Пътешествия и спомени">Travels & Memories</div>
-                        <div class="timeline-text" data-en="A favourite trip or a collection of moments from your travels together." data-bg="Любимо пътуване или колекция от моменти от пътешествията Ви заедно.">A favourite trip or a collection of moments from your travels together.</div>
-                        <div class="timeline-image-placeholder" data-en="📷 Your photo here" data-bg="📷 Вашата снимка тук">📷 Your photo here</div>
+                        <div class="timeline-text" 
+                            data-en="Travel reminds us that we’re alive. Over a few years, we explored over 20 countries across Europe and Asia, tasting new foods and talking to locals, and before that we wandered through the beauty of Bulgaria."   
+                            data-bg="Пътуването е нашият начин да усетим, че сме живи. За няколко години обиколихме над 20 държави в Европа и Азия, опитвахме нова храна и разговаряхме с местните, а преди това се губихме в красотата на България.">
+                            Travel reminds us that we’re alive. Over a few years, we explored over 20 countries across Europe and Asia, tasting new foods and talking to locals, and before that we wandered through the beauty of Bulgaria.
+                        </div>
+                        <div class="timeline-image">
+                            <img src="images/barcelona.jpg" alt="Barcelona">
+                        </div>                    
                     </div>
 
                     <!-- Milestone 6 -->
@@ -1257,18 +1311,15 @@
                         <div class="timeline-dot"></div>
                         <div class="timeline-year" data-en="The question" data-bg="Въпросът">The question</div>
                         <div class="timeline-heading" data-en="The Proposal" data-bg="Предложението">The Proposal</div>
-                        <div class="timeline-text" data-en="The moment that changed everything — how, where, and the joy that followed." data-bg="Моментът, който промени всичко — как, къде и радостта, която последва.">The moment that changed everything — how, where, and the joy that followed.</div>
-                        <div class="timeline-image-placeholder" data-en="📷 Your photo here" data-bg="📷 Вашата снимка тук">📷 Your photo here</div>
+                        <div class="timeline-text" 
+                            data-en="On March 29th, 2025, in Athens, near the sea and the little church where we’ll be getting married, Niki asked, ‘Will you marry me?’. After 15 minutes of tears, laughter, and questions like ‘Are you serious?’, the most certain ‘Yes’ was finally said. And so began our next adventure together…" 
+                            data-bg="На 29.03.2025 в Атина, близо до морето и малката църква, в която ще се венчаваме, Ники зададе въпроса ‘Ще се омъжиш ли за мен?’. След 15 минути сълзи, смях и въпроси от рода на ‘Сериозен ли си?’, най-сигурното ‘Да’ беше изречено. И така започна следващото ни приключение заедно..">
+                            On March 29th, 2025, in Athens, near the sea and the little church where we’ll be getting married, Niki asked, ‘Will you marry me?’. After 15 minutes of tears, laughter, and questions like ‘Are you serious?’, the most certain ‘Yes’ was finally said. And so began our next adventure together…</div>
+                        <div class="timeline-image-vertical">
+                            <img src="images/the-proposal.jpg" alt="proposal">
+                        </div> 
                     </div>
 
-                    <!-- Milestone 7 -->
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-year" data-en="29.05.2026" data-bg="29.05.2026">29.05.2026</div>
-                        <div class="timeline-heading" data-en="Our Wedding Day" data-bg="Нашият сватбен ден">Our Wedding Day</div>
-                        <div class="timeline-text" data-en="And now we celebrate the beginning of forever — with all of you by our side." data-bg="А сега празнуваме началото на нашето завинаги — заедно с всички вас.">And now we celebrate the beginning of forever — with all of you by our side.</div>
-                        <div class="timeline-image-placeholder" data-en="📷 Your photo here" data-bg="📷 Вашата снимка тук">📷 Your photo here</div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -1296,7 +1347,7 @@
                         <div class="schedule-icon">💒</div>
                         <div class="schedule-details">
                             <h3 data-en="The Ceremony" data-bg="Церемонията">The Ceremony</h3>
-                            <p data-en="The moment we say 'I do' — please be seated by 17:20" data-bg="Моментът, в който си казваме „Да“ — моля, заемете местата си до 17:20 ч.">The moment we say 'I do' — please be seated by 17:20</p>
+                            <p data-en="The moment we say 'I do' - please be seated by 17:20" data-bg="Моментът, в който си казваме „Да“ - моля, заемете местата си до 17:20 ч.">The moment we say 'I do' - please be seated by 17:20</p>
                         </div>
                     </div>
 
@@ -1323,7 +1374,7 @@
                         <div class="schedule-icon">🎂</div>
                         <div class="schedule-details">
                             <h3 data-en="Wedding Cake" data-bg="Сватбена торта">Wedding Cake</h3>
-                            <p data-en="Time for something sweet — the cutting of the cake" data-bg="Време за нещо сладко — разрязване на тортата">Time for something sweet — the cutting of the cake</p>
+                            <p data-en="Time for something sweet - the cutting of the cake" data-bg="Време за нещо сладко - разрязване на тортата">Time for something sweet - the cutting of the cake</p>
                         </div>
                     </div>
 
@@ -1332,7 +1383,7 @@
                         <div class="schedule-icon">🎶</div>
                         <div class="schedule-details">
                             <h3 data-en="Party Time!" data-bg="Парти!">Party Time!</h3>
-                            <p data-en="Dance the night away — the celebration continues!" data-bg="Танцувайте до зори — празненството продължава!">Dance the night away — the celebration continues!</p>
+                            <p data-en="Dance the night away - the celebration continues!" data-bg="Танцувайте до зори - празненството продължава!">Dance the night away - the celebration continues!</p>
                         </div>
                     </div>
                 </div>
@@ -1347,7 +1398,7 @@
                 <div class="divider"></div>
 
                 <div class="dresscode-content">
-                    <p class="dresscode-description" data-en="Our wedding is a formal celebration. We kindly ask our guests to dress elegantly, inspired by the colour palette of our wedding — including any shades within these colour families." data-bg="Нашата сватба е официално тържество. Ще се радваме гостите ни да изберат елегантно облекло, вдъхновено от цветовата палитра на сватбата ни, включително и всякакви нюанси на тези цветове.">Our wedding is a formal celebration. We kindly ask our guests to dress elegantly, inspired by the colour palette of our wedding — including any shades within these colour families.</p>
+                    <p class="dresscode-description" data-en="Our wedding is a formal celebration. We kindly ask our guests to dress elegantly, inspired by the colour palette of our wedding - including any shades within these colour families." data-bg="Нашата сватба е официално тържество. Ще се радваме гостите ни да изберат елегантно облекло, вдъхновено от цветовата палитра на сватбата ни, включително и всякакви нюанси на тези цветове.">Our wedding is a formal celebration. We kindly ask our guests to dress elegantly, inspired by the colour palette of our wedding - including any shades within these colour families.</p>
 
                     <div class="color-palette-group">
                         <div class="palette-row">
@@ -1404,8 +1455,8 @@
                 <div class="transport-cards">
                     <div class="transport-card" style="grid-column: 1 / -1;">
                         <div class="transport-card-icon">📍</div>
-                        <h3 data-en="Venue — Villa Ekaterina" data-bg="Място — Вила Екатерина">Venue — Villa Ekaterina</h3>
-                        <p data-en="Our celebration takes place at Villa Ekaterina, a beautiful estate just outside Sofia, surrounded by nature." data-bg="Ще празнуваме във Вила Екатерина — красиво имение край София, заобиколено от природа.">Our celebration takes place at Villa Ekaterina, a beautiful estate just outside Sofia, surrounded by nature.</p>
+                        <h3 data-en="Venue - Villa Ekaterina" data-bg="Място - Вила Екатерина">Venue - Villa Ekaterina</h3>
+                        <p data-en="Our celebration takes place at Villa Ekaterina, a beautiful estate just outside Sofia, surrounded by nature." data-bg="Ще празнуваме във Вила Екатерина - красиво имение край София, заобиколено от природа.">Our celebration takes place at Villa Ekaterina, a beautiful estate just outside Sofia, surrounded by nature.</p>
                         <a href="https://maps.google.com/?q=Villa+Ekaterina+Bulgaria" target="_blank" 
                         style="display:inline-block; margin-top:0.75rem; font-family:'Josefin Sans',sans-serif; font-size:0.75rem; letter-spacing:0.1em; color:var(--emerald); text-decoration:none; border-bottom:1px solid var(--emerald);"
                         data-en="View on Google Maps →" data-bg="Виж в Google Maps →">View on Google Maps →</a>
@@ -1445,7 +1496,7 @@
 
                 <div class="menu-info">
                     <div class="menu-info-card">
-                        <p class="menu-info-text" data-en="All guests will enjoy the same salad, cold starter, and hot starter. The only difference is the main course — you can choose between a classic option with meat or a vegetarian option." data-bg="Всички гости ще се насладят на една и съща салата, студено предястие и топло предястие. Единствената разлика е основното ястие — можете да изберете между класически вариант с месо и вегетариански вариант.">All guests will enjoy the same salad, cold starter, and hot starter. The only difference is the main course — you can choose between a classic option with meat or a vegetarian option.</p>
+                        <p class="menu-info-text" data-en="All guests will enjoy the same salad, cold starter, and hot starter. The only difference is the main course - you can choose between a classic option with meat or a vegetarian option." data-bg="Всички гости ще се насладят на една и съща салата, студено предястие и топло предястие. Единствената разлика е основното ястие - можете да изберете между класически вариант с месо и вегетариански вариант.">All guests will enjoy the same salad, cold starter, and hot starter. The only difference is the main course - you can choose between a classic option with meat or a vegetarian option.</p>
 
                         <div class="menu-choices">
                             <div class="menu-choice">
@@ -1463,7 +1514,7 @@
                             </div>
                         </div>
 
-                        <p class="menu-info-note" data-en="You'll select your preference when you RSVP below. If you have any allergies or dietary requirements, please let us know — we'll make sure the restaurant accommodates you." data-bg="Ще можете да изберете предпочитанието си при потвърждаване на присъствието. Ако имате алергии или специални хранителни изисквания, молим Ви да ни уведомите — ще се погрижим те да бъдат съобразени.">You'll select your preference when you RSVP below. If you have any allergies or dietary requirements, please let us know — we'll make sure the restaurant accommodates you.</p>
+                        <p class="menu-info-note" data-en="You'll select your preference when you RSVP below. If you have any allergies or dietary requirements, please let us know - we'll make sure the restaurant accommodates you." data-bg="Ще можете да изберете предпочитанието си при потвърждаване на присъствието. Ако имате алергии или специални хранителни изисквания, молим Ви да ни уведомите - ще се погрижим те да бъдат съобразени.">You'll select your preference when you RSVP below. If you have any allergies or dietary requirements, please let us know - we'll make sure the restaurant accommodates you.</p>
                     </div>
                 </div>
             </div>
@@ -1669,7 +1720,7 @@
             }
 
             function isValidPhone(phone) {
-                // Strip spaces, dashes, parens, plus sign — then check at least 8 digits remain
+                // Strip spaces, dashes, parens, plus sign - then check at least 8 digits remain
                 const digits = phone.replace(/[\s\-\(\)\+]/g, '');
                 return /^\d{8,15}$/.test(digits);
             }
@@ -1871,7 +1922,7 @@
 
                     if (result.success) {
                         if (result.updated) {
-                            // Duplicate — show update message
+                            // Duplicate - show update message
                             showSuccessMessage(
                                 currentLang === 'bg' ? 'Актуализирано!' : 'Updated!',
                                 currentLang === 'bg'
