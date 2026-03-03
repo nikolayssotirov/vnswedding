@@ -1092,7 +1092,13 @@
                     align-items: center;
                     justify-content: center;
                     gap: 2rem;
-                    z-index: 150;
+                    z-index: 190;
+                }
+
+                .nav.menu-open {
+                    background: transparent !important;
+                    backdrop-filter: none !important;
+                    box-shadow: none !important;
                 }
 
                 .nav-links.open {
@@ -1694,10 +1700,12 @@
 
             function toggleMenu() {
                 document.getElementById('navLinks').classList.toggle('open');
+                document.querySelector('.nav').classList.toggle('menu-open');
             }
 
             function closeMenu() {
                 document.getElementById('navLinks').classList.remove('open');
+                document.querySelector('.nav').classList.remove('menu-open');
             }
 
             // ═══════════════ SCROLL ANIMATIONS ═══════════════
