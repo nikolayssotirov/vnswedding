@@ -112,6 +112,34 @@
                 width: 100%;
             }
 
+            .nav-links a.nav-cta {
+                color: var(--cream);
+                background: var(--copper);
+                padding: 0.55rem 1.1rem;
+                border-radius: 999px;
+                box-shadow: 0 4px 14px rgba(190, 81, 3, 0.35);
+                animation: navCtaPulse 2.4s ease-in-out infinite;
+            }
+
+            .nav-links a.nav-cta::after {
+                display: none;
+            }
+
+            .nav-links a.nav-cta:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 6px 18px rgba(190, 81, 3, 0.5);
+                background: #d35d09;
+            }
+
+            .nav.scrolled .nav-links a.nav-cta {
+                color: var(--cream);
+            }
+
+            @keyframes navCtaPulse {
+                0%, 100% { box-shadow: 0 4px 14px rgba(190, 81, 3, 0.35); }
+                50%      { box-shadow: 0 4px 22px rgba(190, 81, 3, 0.65); }
+            }
+
             .lang-toggle {
                 display: flex;
                 gap: 4px;
@@ -1182,6 +1210,154 @@
                 pointer-events: none;
                 user-select: none;
             }
+
+            /* ═══════════════ SEATING CHART ═══════════════ */
+            #seating {
+                background: var(--cream);
+            }
+
+            .seating-container {
+                max-width: 1200px;
+            }
+
+            .seating-search-wrap {
+                position: relative;
+                max-width: 420px;
+                margin: 0 auto 1.5rem;
+            }
+
+            .seating-search {
+                width: 100%;
+                padding: 0.95rem 1rem 0.95rem 2.8rem;
+                font-family: 'Josefin Sans', sans-serif;
+                font-size: 0.85rem;
+                letter-spacing: 0.08em;
+                border: 1px solid rgba(190, 81, 3, 0.25);
+                background: var(--white);
+                color: var(--text-dark);
+                border-radius: 40px;
+                outline: none;
+                transition: border-color 0.3s, box-shadow 0.3s;
+            }
+
+            .seating-search::placeholder {
+                color: var(--text-light);
+                opacity: 0.8;
+            }
+
+            .seating-search:focus {
+                border-color: var(--copper);
+                box-shadow: 0 0 0 3px rgba(190, 81, 3, 0.12);
+            }
+
+            .seating-search-icon {
+                position: absolute;
+                left: 1.1rem;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 16px;
+                height: 16px;
+                color: var(--copper);
+                pointer-events: none;
+            }
+
+            .seating-no-match {
+                text-align: center;
+                font-family: 'Cormorant Garamond', serif;
+                font-style: italic;
+                color: var(--text-light);
+                font-size: 1rem;
+                margin-bottom: 2rem;
+                display: none;
+            }
+
+            .seating-no-match.visible {
+                display: block;
+            }
+
+            .seating-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+                align-items: start;
+                margin-top: 2rem;
+            }
+
+            .table-card {
+                background: var(--white);
+                border: 1px solid rgba(190, 81, 3, 0.18);
+                border-radius: 24px;
+                padding: 1.4rem 1rem 1.2rem;
+                text-align: center;
+                box-shadow: 0 2px 14px rgba(18, 45, 4, 0.05);
+                transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            }
+
+.table-card-name {
+                font-family: 'Great Vibes', cursive;
+                font-size: 1.55rem;
+                color: var(--copper);
+                margin-bottom: 0.7rem;
+                line-height: 1.1;
+            }
+
+            .table-card-guests {
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 0.9rem;
+                color: var(--text-medium);
+                line-height: 1.55;
+            }
+
+            .table-card-guests .guest {
+                display: block;
+                padding: 0.05rem 0.4rem;
+                border-radius: 4px;
+                transition: background 0.25s, color 0.25s;
+            }
+
+            .table-card.match {
+                border-color: var(--copper);
+                box-shadow: 0 0 0 3px rgba(190, 81, 3, 0.18), 0 10px 26px rgba(190, 81, 3, 0.22);
+                transform: translateY(-2px);
+            }
+
+            .table-card .guest.guest-match {
+                background: rgba(190, 81, 3, 0.18);
+                color: var(--copper);
+                font-weight: 500;
+            }
+
+            .table-num {
+                font-family: 'Josefin Sans', sans-serif;
+                font-size: 0.62rem;
+                letter-spacing: 0.3em;
+                text-transform: uppercase;
+                color: var(--text-light);
+                font-weight: 400;
+                margin-bottom: 0.4rem;
+            }
+
+            @media (max-width: 900px) {
+                .seating-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                    max-width: 640px;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
+
+            @media (max-width: 560px) {
+                .seating-grid {
+                    grid-template-columns: 1fr;
+                    max-width: 420px;
+                }
+                .table-card {
+                    padding: 1.2rem 0.9rem 1rem;
+                }
+                .table-card-name {
+                    font-size: 1.4rem;
+                }
+            }
         </style>
     </head>
     <body>
@@ -1193,6 +1369,7 @@
                     <button onclick="setLang('bg')">BG</button>
                 </div>
                 <ul class="nav-links" id="navLinks">
+                    <li><a href="#seating" class="nav-cta" data-en="Find your seat" data-bg="Намери своето място" onclick="closeMenu()">Find your seat</a></li>
                     <li><a href="#story" data-en="Our Story" data-bg="Нашата история" onclick="closeMenu()">Our Story</a></li>
                     <li><a href="#program" data-en="Program" data-bg="Програма" onclick="closeMenu()">Program</a></li>
                     <li><a href="#dresscode" data-en="Dress Code" data-bg="Дрескод" onclick="closeMenu()">Dress Code</a></li>
@@ -1529,6 +1706,167 @@
             </div>
         </section>
 
+        <!-- ═══════════════ SEATING CHART ═══════════════ -->
+        <section id="seating">
+            <div class="section-container seating-container">
+                <div class="section-label" data-en="Find your table" data-bg="Намерете своята маса">Find your table</div>
+                <h2 class="section-title" data-en="Seating Chart" data-bg="Разпределение на местата">Seating Chart</h2>
+                <div class="divider"></div>
+
+                <div class="seating-search-wrap">
+                    <svg class="seating-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input
+                        id="seatingSearch"
+                        class="seating-search"
+                        type="text"
+                        autocomplete="off"
+                        oninput="seatingSearch()"
+                        data-en-placeholder="Search your name..."
+                        data-bg-placeholder="Търсете името си..."
+                        placeholder="Search your name..."
+                    />
+                </div>
+                <div id="seatingNoMatch" class="seating-no-match" data-en="No matches. Try a different spelling." data-bg="Няма съвпадение. Опитайте друго изписване.">No matches. Try a different spelling.</div>
+
+                <div class="seating-grid">
+                    <div class="table-card">
+                        <div class="table-num" data-en="Table 1" data-bg="Маса 1">Table 1</div>
+                        <div class="table-card-name">Негованци</div>
+                        <div class="table-card-guests">
+                            <span class="guest">Анелия Андонова</span>
+                            <span class="guest">Ани's Guest</span>
+                            <span class="guest">Жоро Николов</span>
+                            <span class="guest">Лиляна Андонова</span>
+                            <span class="guest">Лилия Андонова</span>
+                            <span class="guest">Лили's Guest</span>
+                            <span class="guest">Майка на Лора</span>
+                            <span class="guest">Росен Витанов</span>
+                            <span class="guest">Самуил</span>
+                            <span class="guest">Юлиана Томова-Николова</span>
+                        </div>
+                    </div>
+                    <div class="table-card">
+                        <div class="table-num" data-en="Table 2" data-bg="Маса 2">Table 2</div>
+                        <div class="table-card-name">Братовчеди</div>
+                        <div class="table-card-guests">
+                            <span class="guest">Данаил Костадинов</span>
+                            <span class="guest">Даниел</span>
+                            <span class="guest">Дарина</span>
+                            <span class="guest">Лия Костадинов</span>
+                            <span class="guest">Ралица Вълчева</span>
+                            <span class="guest">Ростислав Райчев</span>
+                            <span class="guest">Силвия Тодорова</span>
+                        </div>
+                    </div>
+                    <div class="table-card">
+                        <div class="table-num" data-en="Table 3" data-bg="Маса 3">Table 3</div>
+                        <div class="table-card-name">Кварталът</div>
+                        <div class="table-card-guests">
+                            <span class="guest">Александра Радева</span>
+                            <span class="guest">Александър Атанасов</span>
+                            <span class="guest">Виктория Николова</span>
+                            <span class="guest">Калин Данаилов</span>
+                            <span class="guest">Лора Богданова</span>
+                            <span class="guest">Мартин Георгиев</span>
+                            <span class="guest">Стефан Минков</span>
+                        </div>
+                    </div>
+                    <div class="table-card">
+                        <div class="table-num" data-en="Table 4" data-bg="Маса 4">Table 4</div>
+                        <div class="table-card-name">Мешана скара</div>
+                        <div class="table-card-guests">
+                            <span class="guest">Виолета Гърбачева</span>
+                            <span class="guest">Даниел Русев</span>
+                            <span class="guest">Деница Желязкова</span>
+                            <span class="guest">Диян Гърбачев</span>
+                            <span class="guest">Мариела</span>
+                            <span class="guest">Невена Кирова</span>
+                            <span class="guest">Никос Богдос</span>
+                            <span class="guest">Петър Стойков</span>
+                        </div>
+                    </div>
+                    <div class="table-card">
+                        <div class="table-num" data-en="Table 5" data-bg="Маса 5">Table 5</div>
+                        <div class="table-card-name">Варненци</div>
+                        <div class="table-card-guests">
+                            <span class="guest">Анна Николова</span>
+                            <span class="guest">Владимир Николов</span>
+                            <span class="guest">Галя</span>
+                            <span class="guest">Ивайла Николова</span>
+                            <span class="guest">Йорданка Джендова</span>
+                            <span class="guest">Огнян</span>
+                            <span class="guest">Петя Райчева</span>
+                            <span class="guest">Росен Райчев</span>
+                            <span class="guest">Татяна Николова</span>
+                        </div>
+                    </div>
+                    <div class="table-card">
+                        <div class="table-num" data-en="Table 6" data-bg="Маса 6">Table 6</div>
+                        <div class="table-card-name">Групата</div>
+                        <div class="table-card-guests">
+                            <span class="guest">Владилена Делякова</span>
+                            <span class="guest">Димитър Деляков</span>
+                            <span class="guest">Жельо Русев</span>
+                            <span class="guest">Карина Вълкова</span>
+                            <span class="guest">Любомир Кайнакчиев</span>
+                            <span class="guest">Михаела Джамбазова</span>
+                            <span class="guest">Михаела Чапарова</span>
+                            <span class="guest">Ралица Асенова</span>
+                            <span class="guest">Стефан Вълков</span>
+                            <span class="guest">Стоян Джамбазов</span>
+                        </div>
+                    </div>
+                    <div class="table-card">
+                        <div class="table-num" data-en="Table 7" data-bg="Маса 7">Table 7</div>
+                        <div class="table-card-name">Бургазлии senior</div>
+                        <div class="table-card-guests">
+                            <span class="guest">Вяра Николова</span>
+                            <span class="guest">Димана Ралева</span>
+                            <span class="guest">Евдокия Сотирова</span>
+                            <span class="guest">Илиан Вълчев</span>
+                            <span class="guest">Костадин Николов</span>
+                            <span class="guest">Николай Ралев</span>
+                            <span class="guest">Сотир Сотиров</span>
+                            <span class="guest">Станка Ралева</span>
+                        </div>
+                    </div>
+                    <div class="table-card">
+                        <div class="table-num" data-en="Table 8" data-bg="Маса 8">Table 8</div>
+                        <div class="table-card-name">Свиленград</div>
+                        <div class="table-card-guests">
+                            <span class="guest">Денис Карайиджит</span>
+                            <span class="guest">Мария Карайиджит</span>
+                            <span class="guest">Мариян Сотиров</span>
+                            <span class="guest">Нина Сотирова</span>
+                            <span class="guest">Петранка Николова</span>
+                            <span class="guest">Петя Николаева</span>
+                            <span class="guest">Симеон Николаев</span>
+                            <span class="guest">Таня Сотирова</span>
+                        </div>
+                    </div>
+                    <div class="table-card">
+                        <div class="table-num" data-en="Table 9" data-bg="Маса 9">Table 9</div>
+                        <div class="table-card-name">Бургазлии junior</div>
+                        <div class="table-card-guests">
+                            <span class="guest">Велиана Георгиева</span>
+                            <span class="guest">Георги Ескидаров</span>
+                            <span class="guest">Деница Ескидарова</span>
+                            <span class="guest">Десислав Динев</span>
+                            <span class="guest">Димитър Нейчев</span>
+                            <span class="guest">Димо Георгиев</span>
+                            <span class="guest">Иванина Динева</span>
+                            <span class="guest">Мирослав Димитров</span>
+                            <span class="guest">Стефани Янкова</span>
+                            <span class="guest">Янимир Янков</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- ═══════════════ RSVP ═══════════════ -->
         <section id="rsvp">
             <div class="section-container">
@@ -1709,6 +2047,35 @@
             function closeMenu() {
                 document.getElementById('navLinks').classList.remove('open');
                 document.querySelector('.nav').classList.remove('menu-open');
+            }
+
+            // ═══════════════ SEATING SEARCH ═══════════════
+            function seatingSearch() {
+                const input = document.getElementById('seatingSearch');
+                const noMatch = document.getElementById('seatingNoMatch');
+                if (!input) return;
+                const query = input.value.trim().toLowerCase();
+                const cards = document.querySelectorAll('#seating .table-card');
+                let anyMatch = false;
+
+                cards.forEach(card => {
+                    card.classList.remove('match');
+                    const guests = card.querySelectorAll('.guest');
+                    let cardMatched = false;
+                    guests.forEach(g => {
+                        g.classList.remove('guest-match');
+                        if (query && g.textContent.toLowerCase().includes(query)) {
+                            g.classList.add('guest-match');
+                            cardMatched = true;
+                        }
+                    });
+                    if (cardMatched) {
+                        card.classList.add('match');
+                        anyMatch = true;
+                    }
+                });
+
+                noMatch.classList.toggle('visible', !!query && !anyMatch);
             }
 
             // ═══════════════ SCROLL ANIMATIONS ═══════════════
