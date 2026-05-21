@@ -1279,7 +1279,7 @@
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
                 gap: 1.5rem;
-                align-items: start;
+                align-items: stretch;
                 margin-top: 2rem;
             }
 
@@ -1328,11 +1328,11 @@
             }
 
             .table-num {
-                font-family: 'Josefin Sans', sans-serif;
-                font-size: 0.62rem;
-                letter-spacing: 0.3em;
-                text-transform: uppercase;
-                color: var(--text-light);
+                font-family: 'Great Vibes', cursive;
+                font-size: 1.55rem;
+                letter-spacing: 0;
+                text-transform: none;
+                color: var(--copper);
                 font-weight: 400;
                 margin-bottom: 0.4rem;
             }
@@ -1520,6 +1520,15 @@
 
                 <div class="schedule-grid">
                     <div class="schedule-item">
+                        <div class="schedule-time">14:00</div>
+                        <div class="schedule-icon">💃</div>
+                        <div class="schedule-details">
+                            <h3 data-en="Bride Stealing" data-bg="Крадене на булка">Bride Stealing</h3>
+                            <p data-en="A beloved Bulgarian tradition — come join the fun. ул. 11 август 35" data-bg="Любима българска традиция — елате да се повеселим. ул. 11 август 35">A beloved Bulgarian tradition — come join the fun. ул. 11 август 35</p>
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
                         <div class="schedule-time">17:00</div>
                         <div class="schedule-icon">🥂</div>
                         <div class="schedule-details">
@@ -1556,7 +1565,7 @@
                     </div>
 
                     <div class="schedule-item">
-                        <div class="schedule-time">22:30</div>
+                        <div class="schedule-time">23:00</div>
                         <div class="schedule-icon">🎂</div>
                         <div class="schedule-details">
                             <h3 data-en="Wedding Cake" data-bg="Сватбена торта">Wedding Cake</h3>
@@ -1565,7 +1574,7 @@
                     </div>
 
                     <div class="schedule-item">
-                        <div class="schedule-time">23:00</div>
+                        <div class="schedule-time">23:30</div>
                         <div class="schedule-icon">🎶</div>
                         <div class="schedule-details">
                             <h3 data-en="Party Time!" data-bg="Парти!">Party Time!</h3>
@@ -1651,15 +1660,18 @@
                     <div class="transport-card">
                         <div class="transport-card-icon">🚌</div>
                         <h3 data-en="Shuttle from Sofia" data-bg="Превоз от София">Shuttle from Sofia</h3>
-                        <p data-en="A bus will depart from Alexander Nevski Cathedral to take you directly to the venue." data-bg="Автобус ще Ви закара от катедрала Александър Невски директно до Вила Екатерина.">A bus will depart from Alexander Nevski Cathedral to take you directly to the venue.</p>
-                        <span class="transport-time" data-en="Departure: TBD" data-bg="Тръгване: TBD">Departure: TBD</span>
+                        <p data-en="Organized transport from Vasil Levski Square directly to the venue." data-bg="Организиран превоз от площад Васил Левски директно до Вила Екатерина.">Organized transport from Vasil Levski Square directly to the venue.</p>
+                        <a href="https://maps.app.goo.gl/7MEZwGBqDEzdEfN88" target="_blank"
+                        style="display:inline-block; margin-top:0.5rem; font-family:'Josefin Sans',sans-serif; font-size:0.75rem; letter-spacing:0.1em; color:var(--emerald); text-decoration:none; border-bottom:1px solid var(--emerald);"
+                        data-en="View on Google Maps →" data-bg="Виж в Google Maps →">View on Google Maps →</a>
+                        <span class="transport-time" data-en="Departure: 16:00" data-bg="Тръгване: 16:00">Departure: 16:00</span>
                     </div>
 
                     <div class="transport-card">
                         <div class="transport-card-icon">🚐</div>
                         <h3 data-en="Shuttle Back to Sofia" data-bg="Превоз обратно до София">Shuttle Back to Sofia</h3>
                         <p data-en="Two shuttles will be available to take you back to Sofia at the end of the evening." data-bg="Автобуси ще бъдат на разположение, за да Ви отведат обратно до София в края на вечерта.">Two shuttles will be available to take you back to Sofia at the end of the evening.</p>
-                        <span class="transport-time" data-en="Departures: TBD" data-bg="Тръгване: TBD">Departures: TBD</span>
+                        <span class="transport-time" data-en="Departures: 00:30 &amp; 02:00" data-bg="Тръгване: 00:30 и 02:00">Departures: 00:30 &amp; 02:00</span>
                     </div>
 
                     <div class="transport-card">
@@ -1710,7 +1722,7 @@
         <section id="seating">
             <div class="section-container seating-container">
                 <div class="section-label" data-en="Find your table" data-bg="Намерете своята маса">Find your table</div>
-                <h2 class="section-title" data-en="Seating Chart" data-bg="Разпределение на местата">Seating Chart</h2>
+                <h2 class="section-title" data-en="Seating Chart" data-bg="Разпределение по маси">Seating Chart</h2>
                 <div class="divider"></div>
 
                 <div class="seating-search-wrap">
@@ -1729,138 +1741,129 @@
                         placeholder="Search your name..."
                     />
                 </div>
-                <div id="seatingNoMatch" class="seating-no-match" data-en="No matches. Try a different spelling." data-bg="Няма съвпадение. Опитайте друго изписване.">No matches. Try a different spelling.</div>
+                <div id="seatingNoMatch" class="seating-no-match" data-en="Seems we disagree on the spelling of your name — find Viktoria Nikolova (in the orange dress) for help." data-bg="Явно имаме различни виждания за изписване на името ти, потърси Виктория Николова (с оранжевата рокля) за помощ.">Seems we disagree on the spelling of your name — find Viktoria Nikolova (in the orange dress) for help.</div>
 
                 <div class="seating-grid">
                     <div class="table-card">
-                        <div class="table-num" data-en="Table 1" data-bg="Маса 1">Table 1</div>
-                        <div class="table-card-name">Негованци</div>
+                        <div class="table-num" data-en="Table One" data-bg="Маса Едно">Table One</div>
                         <div class="table-card-guests">
-                            <span class="guest" data-bg="Анелия Андонова" data-en="Anelia Andonova">Анелия Андонова</span>
-                            <span class="guest" data-bg="Ани's Guest" data-en="Ani's Guest">Ани's Guest</span>
-                            <span class="guest" data-bg="Жоро Николов" data-en="Zhoro Nikolov">Жоро Николов</span>
-                            <span class="guest" data-bg="Лиляна Андонова" data-en="Lilyana Andonova">Лиляна Андонова</span>
-                            <span class="guest" data-bg="Лилия Андонова" data-en="Lilia Andonova">Лилия Андонова</span>
-                            <span class="guest" data-bg="Лили's Guest" data-en="Lili's Guest">Лили's Guest</span>
-                            <span class="guest" data-bg="Майка на Лора" data-en="Lora's Mom">Майка на Лора</span>
-                            <span class="guest" data-bg="Росен Витанов" data-en="Rosen Vitanov">Росен Витанов</span>
-                            <span class="guest" data-bg="Самуил" data-en="Samuil">Самуил</span>
-                            <span class="guest" data-bg="Юлиана Томова-Николова" data-en="Yuliana Tomova-Nikolova">Юлиана Томова-Николова</span>
+                            <span class="guest" data-bg="Анелия Андонова" data-en="Anelia Andonova">Anelia Andonova</span>
+                            <span class="guest" data-bg="Борис Борисов" data-en="Boris Borisov">Boris Borisov</span>
+                            <span class="guest" data-bg="Валентин Топалов" data-en="Valentin Topalov">Valentin Topalov</span>
+                            <span class="guest" data-bg="Жоро Николов" data-en="Joro Nikolov">Joro Nikolov</span>
+                            <span class="guest" data-bg="Лилия Андонова" data-en="Liliya Andonova">Liliya Andonova</span>
+                            <span class="guest" data-bg="Лиляна Андонова" data-en="Lilyana Andonova">Lilyana Andonova</span>
+                            <span class="guest" data-bg="Марина Янева" data-en="Marina Yaneva">Marina Yaneva</span>
+                            <span class="guest" data-bg="Росен Витанов" data-en="Rosen Vitanov">Rosen Vitanov</span>
+                            <span class="guest" data-bg="Самуил Ганев" data-en="Samuil Ganev">Samuil Ganev</span>
+                            <span class="guest" data-bg="Юлиана Томова-Николова" data-en="Yuliana Tomova-Nikolova">Yuliana Tomova-Nikolova</span>
                         </div>
                     </div>
                     <div class="table-card">
-                        <div class="table-num" data-en="Table 2" data-bg="Маса 2">Table 2</div>
-                        <div class="table-card-name">Братовчеди</div>
+                        <div class="table-num" data-en="Table Two" data-bg="Маса Две">Table Two</div>
                         <div class="table-card-guests">
-                            <span class="guest" data-bg="Данаил Костадинов" data-en="Danail Kostadinov">Данаил Костадинов</span>
-                            <span class="guest" data-bg="Даниел" data-en="Daniel">Даниел</span>
-                            <span class="guest" data-bg="Дарина" data-en="Darina">Дарина</span>
-                            <span class="guest" data-bg="Лия Костадинов" data-en="Liya Kostadinov">Лия Костадинов</span>
-                            <span class="guest" data-bg="Ралица Вълчева" data-en="Ralitsa Valcheva">Ралица Вълчева</span>
-                            <span class="guest" data-bg="Ростислав Райчев" data-en="Rostislav Raychev">Ростислав Райчев</span>
-                            <span class="guest" data-bg="Силвия Тодорова" data-en="Silviya Todorova">Силвия Тодорова</span>
+                            <span class="guest" data-bg="Данаил Костадинов" data-en="Danail Kostadinov">Danail Kostadinov</span>
+                            <span class="guest" data-bg="Даниел Чавеев" data-en="Daniel Chaveev">Daniel Chaveev</span>
+                            <span class="guest" data-bg="Дарина Петрова" data-en="Darina Petrova">Darina Petrova</span>
+                            <span class="guest" data-bg="Лия Костадинов" data-en="Liya Kostadinov">Liya Kostadinov</span>
+                            <span class="guest" data-bg="Ралица Вълчева" data-en="Ralitsa Valcheva">Ralitsa Valcheva</span>
+                            <span class="guest" data-bg="Ростислав Райчев" data-en="Rostislav Raychev">Rostislav Raychev</span>
+                            <span class="guest" data-bg="Силвия Тодорова" data-en="Silviya Todorova">Silviya Todorova</span>
                         </div>
                     </div>
                     <div class="table-card">
-                        <div class="table-num" data-en="Table 3" data-bg="Маса 3">Table 3</div>
-                        <div class="table-card-name">Кварталът</div>
+                        <div class="table-num" data-en="Table Three" data-bg="Маса Три">Table Three</div>
                         <div class="table-card-guests">
-                            <span class="guest" data-bg="Александра Радева" data-en="Aleksandra Radeva">Александра Радева</span>
-                            <span class="guest" data-bg="Александър Атанасов" data-en="Aleksandar Atanasov">Александър Атанасов</span>
-                            <span class="guest" data-bg="Виктория Николова" data-en="Viktoria Nikolova">Виктория Николова</span>
-                            <span class="guest" data-bg="Калин Данаилов" data-en="Kalin Danailov">Калин Данаилов</span>
-                            <span class="guest" data-bg="Лора Богданова" data-en="Lora Bogdanova">Лора Богданова</span>
-                            <span class="guest" data-bg="Мартин Георгиев" data-en="Martin Georgiev">Мартин Георгиев</span>
-                            <span class="guest" data-bg="Стефан Минков" data-en="Stefan Minkov">Стефан Минков</span>
+                            <span class="guest" data-bg="Александра Радева" data-en="Aleksandra Radeva">Aleksandra Radeva</span>
+                            <span class="guest" data-bg="Александър Атанасов" data-en="Aleksandar Atanasov">Aleksandar Atanasov</span>
+                            <span class="guest" data-bg="Виктория Николова" data-en="Viktoria Nikolova">Viktoria Nikolova</span>
+                            <span class="guest" data-bg="Калин Данаилов" data-en="Kalin Danailov">Kalin Danailov</span>
+                            <span class="guest" data-bg="Лора Богданова" data-en="Lora Bogdanova">Lora Bogdanova</span>
+                            <span class="guest" data-bg="Мартин Георгиев" data-en="Martin Georgiev">Martin Georgiev</span>
+                            <span class="guest" data-bg="Стефан Минков" data-en="Stefan Minkov">Stefan Minkov</span>
                         </div>
                     </div>
                     <div class="table-card">
-                        <div class="table-num" data-en="Table 4" data-bg="Маса 4">Table 4</div>
-                        <div class="table-card-name">Мешана скара</div>
+                        <div class="table-num" data-en="Table Four" data-bg="Маса Четири">Table Four</div>
                         <div class="table-card-guests">
-                            <span class="guest" data-bg="Виолета Гърбачева" data-en="Violeta Garbacheva">Виолета Гърбачева</span>
-                            <span class="guest" data-bg="Даниел Русев" data-en="Daniel Rusev">Даниел Русев</span>
-                            <span class="guest" data-bg="Деница Желязкова" data-en="Denitsa Zhelyazkova">Деница Желязкова</span>
-                            <span class="guest" data-bg="Диян Гърбачев" data-en="Diyan Garbachev">Диян Гърбачев</span>
-                            <span class="guest" data-bg="Мариела" data-en="Mariella">Мариела</span>
-                            <span class="guest" data-bg="Невена Кирова" data-en="Nevena Kirova">Невена Кирова</span>
-                            <span class="guest" data-bg="Никос Богдос" data-en="Nikos Bogdos">Никос Богдос</span>
-                            <span class="guest" data-bg="Петър Стойков" data-en="Petar Stoykov">Петър Стойков</span>
+                            <span class="guest" data-bg="Виолета Гърбачева" data-en="Violeta Garbacheva">Violeta Garbacheva</span>
+                            <span class="guest" data-bg="Даниел Русев" data-en="Daniel Rusev">Daniel Rusev</span>
+                            <span class="guest" data-bg="Деница Желязкова" data-en="Denitsa Zhelyazkova">Denitsa Zhelyazkova</span>
+                            <span class="guest" data-bg="Диян Гърбачев" data-en="Diyan Garbachev">Diyan Garbachev</span>
+                            <span class="guest" data-bg="Мариела" data-en="Mariella">Mariella</span>
+                            <span class="guest" data-bg="Невена Кирова" data-en="Nevena Kirova">Nevena Kirova</span>
+                            <span class="guest" data-bg="Никос Богдос" data-en="Nikos Bogdos">Nikos Bogdos</span>
+                            <span class="guest" data-bg="Петър Стойков" data-en="Petar Stoykov">Petar Stoykov</span>
                         </div>
                     </div>
                     <div class="table-card">
-                        <div class="table-num" data-en="Table 5" data-bg="Маса 5">Table 5</div>
-                        <div class="table-card-name">Варненци</div>
+                        <div class="table-num" data-en="Table Five" data-bg="Маса Пет">Table Five</div>
                         <div class="table-card-guests">
-                            <span class="guest" data-bg="Анна Николова" data-en="Anna Nikolova">Анна Николова</span>
-                            <span class="guest" data-bg="Владимир Николов" data-en="Vladimir Nikolov">Владимир Николов</span>
-                            <span class="guest" data-bg="Галя" data-en="Galya">Галя</span>
-                            <span class="guest" data-bg="Ивайла Николова" data-en="Ivayla Nikolova">Ивайла Николова</span>
-                            <span class="guest" data-bg="Йорданка Джендова" data-en="Yordanka Dzhendova">Йорданка Джендова</span>
-                            <span class="guest" data-bg="Огнян" data-en="Ognyan">Огнян</span>
-                            <span class="guest" data-bg="Петя Райчева" data-en="Petya Raycheva">Петя Райчева</span>
-                            <span class="guest" data-bg="Росен Райчев" data-en="Rosen Raychev">Росен Райчев</span>
-                            <span class="guest" data-bg="Татяна Николова" data-en="Tatyana Nikolova">Татяна Николова</span>
+                            <span class="guest" data-bg="Анна Николова" data-en="Anna Nikolova">Anna Nikolova</span>
+                            <span class="guest" data-bg="Владимир Николов" data-en="Vladimir Nikolov">Vladimir Nikolov</span>
+                            <span class="guest" data-bg="Галя" data-en="Galya">Galya</span>
+                            <span class="guest" data-bg="Ивайла Николова" data-en="Ivayla Nikolova">Ivayla Nikolova</span>
+                            <span class="guest" data-bg="Йорданка Джендова" data-en="Yordanka Dzhendova">Yordanka Dzhendova</span>
+                            <span class="guest" data-bg="Огнян" data-en="Ognyan">Ognyan</span>
+                            <span class="guest" data-bg="Петя Райчева" data-en="Petya Raycheva">Petya Raycheva</span>
+                            <span class="guest" data-bg="Росен Райчев" data-en="Rosen Raychev">Rosen Raychev</span>
+                            <span class="guest" data-bg="Татяна Николова" data-en="Tatyana Nikolova">Tatyana Nikolova</span>
                         </div>
                     </div>
                     <div class="table-card">
-                        <div class="table-num" data-en="Table 6" data-bg="Маса 6">Table 6</div>
-                        <div class="table-card-name">Групата</div>
+                        <div class="table-num" data-en="Table Six" data-bg="Маса Шест">Table Six</div>
                         <div class="table-card-guests">
-                            <span class="guest" data-bg="Владилена Делякова" data-en="Vladilena Delyakova">Владилена Делякова</span>
-                            <span class="guest" data-bg="Димитър Деляков" data-en="Dimitar Delyakov">Димитър Деляков</span>
-                            <span class="guest" data-bg="Жельо Русев" data-en="Zhelyo Rusev">Жельо Русев</span>
-                            <span class="guest" data-bg="Карина Вълкова" data-en="Karina Valkova">Карина Вълкова</span>
-                            <span class="guest" data-bg="Любомир Кайнакчиев" data-en="Lyubomir Kaynakchiev">Любомир Кайнакчиев</span>
-                            <span class="guest" data-bg="Михаела Джамбазова" data-en="Mihaela Dzhambazova">Михаела Джамбазова</span>
-                            <span class="guest" data-bg="Михаела Чапарова" data-en="Mihaela Chaparova">Михаела Чапарова</span>
-                            <span class="guest" data-bg="Ралица Асенова" data-en="Ralitsa Asenova">Ралица Асенова</span>
-                            <span class="guest" data-bg="Стефан Вълков" data-en="Stefan Valkov">Стефан Вълков</span>
-                            <span class="guest" data-bg="Стоян Джамбазов" data-en="Stoyan Dzhambazov">Стоян Джамбазов</span>
+                            <span class="guest" data-bg="Владилена Делякова" data-en="Vladilena Delyakova">Vladilena Delyakova</span>
+                            <span class="guest" data-bg="Димитър Деляков" data-en="Dimitar Delyakov">Dimitar Delyakov</span>
+                            <span class="guest" data-bg="Жельо Русев" data-en="Zhelyo Rusev">Zhelyo Rusev</span>
+                            <span class="guest" data-bg="Карина Вълкова" data-en="Karina Valkova">Karina Valkova</span>
+                            <span class="guest" data-bg="Любомир Кайнакчиев" data-en="Lyubomir Kaynakchiev">Lyubomir Kaynakchiev</span>
+                            <span class="guest" data-bg="Михаела Джамбазова" data-en="Mihaela Dzhambazova">Mihaela Dzhambazova</span>
+                            <span class="guest" data-bg="Михаела Чапарова" data-en="Mihaela Chaparova">Mihaela Chaparova</span>
+                            <span class="guest" data-bg="Ралица Асенова" data-en="Ralitsa Asenova">Ralitsa Asenova</span>
+                            <span class="guest" data-bg="Стефан Вълков" data-en="Stefan Valkov">Stefan Valkov</span>
+                            <span class="guest" data-bg="Стоян Джамбазов" data-en="Stoyan Dzhambazov">Stoyan Dzhambazov</span>
                         </div>
                     </div>
                     <div class="table-card">
-                        <div class="table-num" data-en="Table 7" data-bg="Маса 7">Table 7</div>
-                        <div class="table-card-name">Бургазлии senior</div>
+                        <div class="table-num" data-en="Table Seven" data-bg="Маса Седем">Table Seven</div>
                         <div class="table-card-guests">
-                            <span class="guest" data-bg="Вяра Николова" data-en="Vyara Nikolova">Вяра Николова</span>
-                            <span class="guest" data-bg="Димана Ралева" data-en="Dimana Raleva">Димана Ралева</span>
-                            <span class="guest" data-bg="Евдокия Сотирова" data-en="Evdokiya Sotirova">Евдокия Сотирова</span>
-                            <span class="guest" data-bg="Илиан Вълчев" data-en="Ilian Valchev">Илиан Вълчев</span>
-                            <span class="guest" data-bg="Костадин Николов" data-en="Kostadin Nikolov">Костадин Николов</span>
-                            <span class="guest" data-bg="Николай Ралев" data-en="Nikolay Ralev">Николай Ралев</span>
-                            <span class="guest" data-bg="Сотир Сотиров" data-en="Sotir Sotirov">Сотир Сотиров</span>
-                            <span class="guest" data-bg="Станка Ралева" data-en="Stanka Raleva">Станка Ралева</span>
+                            <span class="guest" data-bg="Вяра Николова" data-en="Vyara Nikolova">Vyara Nikolova</span>
+                            <span class="guest" data-bg="Димана Ралева" data-en="Dimana Raleva">Dimana Raleva</span>
+                            <span class="guest" data-bg="Евдокия Сотирова" data-en="Evdokiya Sotirova">Evdokiya Sotirova</span>
+                            <span class="guest" data-bg="Илиан Вълчев" data-en="Ilian Valchev">Ilian Valchev</span>
+                            <span class="guest" data-bg="Костадин Николов" data-en="Kostadin Nikolov">Kostadin Nikolov</span>
+                            <span class="guest" data-bg="Николай Ралев" data-en="Nikolay Ralev">Nikolay Ralev</span>
+                            <span class="guest" data-bg="Сотир Сотиров" data-en="Sotir Sotirov">Sotir Sotirov</span>
+                            <span class="guest" data-bg="Станка Ралева" data-en="Stanka Raleva">Stanka Raleva</span>
                         </div>
                     </div>
                     <div class="table-card">
-                        <div class="table-num" data-en="Table 8" data-bg="Маса 8">Table 8</div>
-                        <div class="table-card-name">Свиленград</div>
+                        <div class="table-num" data-en="Table Eight" data-bg="Маса Осем">Table Eight</div>
                         <div class="table-card-guests">
-                            <span class="guest" data-bg="Денис Караиджит" data-en="Denis Karayigit">Денис Караиджит</span>
-                            <span class="guest" data-bg="Мария Караиджит" data-en="Mariya Karayigit">Мария Караиджит</span>
-                            <span class="guest" data-bg="Мариян Сотиров" data-en="Mariyan Sotirov">Мариян Сотиров</span>
-                            <span class="guest" data-bg="Нина Сотирова" data-en="Nina Sotirova">Нина Сотирова</span>
-                            <span class="guest" data-bg="Петранка Николова" data-en="Petranka Nikolova">Петранка Николова</span>
-                            <span class="guest" data-bg="Петя Николаева" data-en="Petya Nikolaeva">Петя Николаева</span>
-                            <span class="guest" data-bg="Симеон Николаев" data-en="Simeon Nikolaev">Симеон Николаев</span>
-                            <span class="guest" data-bg="Таня Сотирова" data-en="Tanya Sotirova">Таня Сотирова</span>
+                            <span class="guest" data-bg="Денис Караиджит" data-en="Denis Karayigit">Denis Karayigit</span>
+                            <span class="guest" data-bg="Мариян Сотиров" data-en="Mariyan Sotirov">Mariyan Sotirov</span>
+                            <span class="guest" data-bg="Мария Караиджит" data-en="Mariya Karayigit">Mariya Karayigit</span>
+                            <span class="guest" data-bg="Нина Сотирова" data-en="Nina Sotirova">Nina Sotirova</span>
+                            <span class="guest" data-bg="Петранка Николова" data-en="Petranka Nikolova">Petranka Nikolova</span>
+                            <span class="guest" data-bg="Петя Николаева" data-en="Petya Nikolaeva">Petya Nikolaeva</span>
+                            <span class="guest" data-bg="Симеон Николаев" data-en="Simeon Nikolaev">Simeon Nikolaev</span>
+                            <span class="guest" data-bg="Таня Сотирова" data-en="Tanya Sotirova">Tanya Sotirova</span>
                         </div>
                     </div>
                     <div class="table-card">
-                        <div class="table-num" data-en="Table 9" data-bg="Маса 9">Table 9</div>
-                        <div class="table-card-name">Бургазлии junior</div>
+                        <div class="table-num" data-en="Table Nine" data-bg="Маса Девет">Table Nine</div>
                         <div class="table-card-guests">
-                            <span class="guest" data-bg="Велиана Георгиева" data-en="Veliana Georgieva">Велиана Георгиева</span>
-                            <span class="guest" data-bg="Георги Ескидаров" data-en="Georgi Eskidarov">Георги Ескидаров</span>
-                            <span class="guest" data-bg="Деница Ескидарова" data-en="Denitsa Eskidarova">Деница Ескидарова</span>
-                            <span class="guest" data-bg="Десислав Динев" data-en="Desislav Dinev">Десислав Динев</span>
-                            <span class="guest" data-bg="Димитър Нейчев" data-en="Dimitar Neychev">Димитър Нейчев</span>
-                            <span class="guest" data-bg="Димо Георгиев" data-en="Dimo Georgiev">Димо Георгиев</span>
-                            <span class="guest" data-bg="Иванина Динева" data-en="Ivanina Dineva">Иванина Динева</span>
-                            <span class="guest" data-bg="Мирослав Димитров" data-en="Miroslav Dimitrov">Мирослав Димитров</span>
-                            <span class="guest" data-bg="Стефани Янкова" data-en="Stefani Yankova">Стефани Янкова</span>
-                            <span class="guest" data-bg="Янимир Янков" data-en="Yanimiр Yankov">Янимир Янков</span>
+                            <span class="guest" data-bg="Велиана Георгиева" data-en="Veliana Georgieva">Veliana Georgieva</span>
+                            <span class="guest" data-bg="Георги Ескидаров" data-en="Georgi Eskidarov">Georgi Eskidarov</span>
+                            <span class="guest" data-bg="Деница Ескидарова" data-en="Denitsa Eskidarova">Denitsa Eskidarova</span>
+                            <span class="guest" data-bg="Десислав Динев" data-en="Desislav Dinev">Desislav Dinev</span>
+                            <span class="guest" data-bg="Димитър Нейчев" data-en="Dimitar Neychev">Dimitar Neychev</span>
+                            <span class="guest" data-bg="Димо Георгиев" data-en="Dimo Georgiev">Dimo Georgiev</span>
+                            <span class="guest" data-bg="Иванина Динева" data-en="Ivanina Dineva">Ivanina Dineva</span>
+                            <span class="guest" data-bg="Мирослав Димитров" data-en="Miroslav Dimitrov">Miroslav Dimitrov</span>
+                            <span class="guest" data-bg="Стефани Янкова" data-en="Stefani Yankova">Stefani Yankova</span>
+                            <span class="guest" data-bg="Янимир Янков" data-en="Yanimir Yankov">Yanimir Yankov</span>
                         </div>
                     </div>
                 </div>
