@@ -81,6 +81,8 @@
                 list-style: none;
             }
 
+
+
             .nav-links a {
                 text-decoration: none;
                 color: white;
@@ -679,6 +681,7 @@
             #transport {
                 background: var(--cream);
             }
+
 
             .transport-cards {
                 display: grid;
@@ -1370,12 +1373,13 @@
                 </div>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#seating" class="nav-cta" data-en="Find your seat" data-bg="Намери своето място" onclick="closeMenu()">Find your seat</a></li>
-                    <li><a href="#story" data-en="Our Story" data-bg="Нашата история" onclick="closeMenu()">Our Story</a></li>
+                    <li><a href="#story" data-en="Our Story" data-bg="История" onclick="closeMenu()">Our Story</a></li>
+                    <li><a href="#gifts" data-en="Gifts" data-bg="Подаръци" onclick="closeMenu()">Gifts</a></li>
                     <li><a href="#program" data-en="Program" data-bg="Програма" onclick="closeMenu()">Program</a></li>
                     <li><a href="#dresscode" data-en="Dress Code" data-bg="Дрескод" onclick="closeMenu()">Dress Code</a></li>
                     <li><a href="#transport" data-en="Getting There" data-bg="Транспорт" onclick="closeMenu()">Getting There</a></li>
                     <li><a href="#menu" data-en="Menu" data-bg="Меню" onclick="closeMenu()">Menu</a></li>
-                    <li><a href="#rsvp" data-en="RSVP" data-bg="Потвърждение" onclick="closeMenu()">RSVP</a></li>
+                    <li><a href="#rsvp" data-en="RSVP" data-bg="RSVP" onclick="closeMenu()">RSVP</a></li>
                 </ul>
                 <div class="hamburger" id="hamburger" onclick="toggleMenu()">
                     <span></span>
@@ -1510,6 +1514,26 @@
             </div>
         </section>
 
+        <!-- ═══════════════ GIFTS ═══════════════ -->
+        <section id="gifts">
+            <div class="section-container" style="text-align:center; max-width:780px;">
+                <div class="section-label" data-en="A small note" data-bg="Малка бележка">A small note</div>
+                <h2 class="section-title" data-en="Gifts" data-bg="Подаръци">Gifts</h2>
+                <div class="divider"></div>
+                <div style="background:#fff; border:1px solid rgba(190,81,3,0.18); border-radius:24px; padding:2.5rem 2rem; box-shadow:0 2px 14px rgba(18,45,4,0.05); margin-top:2rem; text-align:center;">
+                    <p style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; color:var(--text-medium); line-height:1.8; margin-bottom:1.2rem;"
+                        data-en="For us, this day marks the beginning of our family, and your presence is the most precious gift."
+                        data-bg="За нас този ден е началото на нашето семейство, а Вашето присъствие е най-ценният подарък.">For us, this day marks the beginning of our family, and your presence is the most precious gift.</p>
+                    <p style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; color:var(--text-medium); line-height:1.8; margin-bottom:1.2rem;"
+                        data-en="If you'd like to give us something more, we'd be grateful for a financial gesture to help us take our first steps in our life together."
+                        data-bg="Ако желаете да ни зарадвате допълнително, ще сме благодарни за финансов жест, който ще ни помогне да направим първите крачки в нашия съвместен живот.">If you'd like to give us something more, we'd be grateful for a financial gesture to help us take our first steps in our life together.</p>
+                    <p style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; color:var(--text-medium); line-height:1.8;"
+                        data-en="As we'll be heading off on our honeymoon shortly after the celebration, we kindly ask that you leave the flowers in nature — where they'll continue to bring their beauty."
+                        data-bg="Тъй като скоро след празника заминаваме на меден месец, Ви молим да оставим цветята в природата – там, където ще продължат да носят своята красота.">As we'll be heading off on our honeymoon shortly after the celebration, we kindly ask that you leave the flowers in nature — where they'll continue to bring their beauty.</p>
+                </div>
+            </div>
+        </section>
+
         <!-- ═══════════════ PROGRAM ═══════════════ -->
         <section id="program">
             <div class="section-container">
@@ -1524,7 +1548,7 @@
                         <div class="schedule-icon">👰</div>
                         <div class="schedule-details">
                             <h3 data-en="Bride Stealing" data-bg="Крадене на булка">Bride Stealing</h3>
-                            <p data-en="Come join the fun. ул. 11 август 35" data-bg="Елате да се повеселим. ул. 11 август 35">Come join the fun. ул. 11 август 35</p>
+                            <p data-en="Come join the fun. 11 August St. 35" data-bg="Елате да се повеселим. ул. 11 август 35">Come join the fun. 11 August St. 35</p>
                         </div>
                     </div>
 
@@ -1774,18 +1798,6 @@
                     <div class="table-card">
                         <div class="table-num" data-en="Table Three" data-bg="Маса Три">Table Three</div>
                         <div class="table-card-guests">
-                            <span class="guest" data-bg="Александра Радева" data-en="Aleksandra Radeva">Aleksandra Radeva</span>
-                            <span class="guest" data-bg="Александър Атанасов" data-en="Aleksandar Atanasov">Aleksandar Atanasov</span>
-                            <span class="guest" data-bg="Виктория Николова" data-en="Viktoria Nikolova">Viktoria Nikolova</span>
-                            <span class="guest" data-bg="Калин Данаилов" data-en="Kalin Danailov">Kalin Danailov</span>
-                            <span class="guest" data-bg="Лора Богданова" data-en="Lora Bogdanova">Lora Bogdanova</span>
-                            <span class="guest" data-bg="Мартин Георгиев" data-en="Martin Georgiev">Martin Georgiev</span>
-                            <span class="guest" data-bg="Стефан Минков" data-en="Stefan Minkov">Stefan Minkov</span>
-                        </div>
-                    </div>
-                    <div class="table-card">
-                        <div class="table-num" data-en="Table Four" data-bg="Маса Четири">Table Four</div>
-                        <div class="table-card-guests">
                             <span class="guest" data-bg="Виолета Гърбачева" data-en="Violeta Garbacheva">Violeta Garbacheva</span>
                             <span class="guest" data-bg="Даниел Русев" data-en="Daniel Rusev">Daniel Rusev</span>
                             <span class="guest" data-bg="Деница Желязкова" data-en="Denitsa Zhelyazkova">Denitsa Zhelyazkova</span>
@@ -1797,7 +1809,7 @@
                         </div>
                     </div>
                     <div class="table-card">
-                        <div class="table-num" data-en="Table Five" data-bg="Маса Пет">Table Five</div>
+                        <div class="table-num" data-en="Table Four" data-bg="Маса Четири">Table Four</div>
                         <div class="table-card-guests">
                             <span class="guest" data-bg="Анна Николова" data-en="Anna Nikolova">Anna Nikolova</span>
                             <span class="guest" data-bg="Владимир Николов" data-en="Vladimir Nikolov">Vladimir Nikolov</span>
@@ -1808,6 +1820,18 @@
                             <span class="guest" data-bg="Петя Райчева" data-en="Petya Raycheva">Petya Raycheva</span>
                             <span class="guest" data-bg="Росен Райчев" data-en="Rosen Raychev">Rosen Raychev</span>
                             <span class="guest" data-bg="Татяна Николова" data-en="Tatyana Nikolova">Tatyana Nikolova</span>
+                        </div>
+                    </div>
+                    <div class="table-card">
+                        <div class="table-num" data-en="Table Five" data-bg="Маса Пет">Table Five</div>
+                        <div class="table-card-guests">
+                            <span class="guest" data-bg="Александра Радева" data-en="Aleksandra Radeva">Aleksandra Radeva</span>
+                            <span class="guest" data-bg="Александър Атанасов" data-en="Aleksandar Atanasov">Aleksandar Atanasov</span>
+                            <span class="guest" data-bg="Виктория Николова" data-en="Viktoria Nikolova">Viktoria Nikolova</span>
+                            <span class="guest" data-bg="Калин Данаилов" data-en="Kalin Danailov">Kalin Danailov</span>
+                            <span class="guest" data-bg="Лора Богданова" data-en="Lora Bogdanova">Lora Bogdanova</span>
+                            <span class="guest" data-bg="Мартин Георгиев" data-en="Martin Georgiev">Martin Georgiev</span>
+                            <span class="guest" data-bg="Стефан Минков" data-en="Stefan Minkov">Stefan Minkov</span>
                         </div>
                     </div>
                     <div class="table-card">
@@ -1828,6 +1852,21 @@
                     <div class="table-card">
                         <div class="table-num" data-en="Table Seven" data-bg="Маса Седем">Table Seven</div>
                         <div class="table-card-guests">
+                            <span class="guest" data-bg="Велиана Георгиева" data-en="Veliana Georgieva">Veliana Georgieva</span>
+                            <span class="guest" data-bg="Георги Ескидаров" data-en="Georgi Eskidarov">Georgi Eskidarov</span>
+                            <span class="guest" data-bg="Деница Ескидарова" data-en="Denitsa Eskidarova">Denitsa Eskidarova</span>
+                            <span class="guest" data-bg="Десислав Динев" data-en="Desislav Dinev">Desislav Dinev</span>
+                            <span class="guest" data-bg="Димитър Нейчев" data-en="Dimitar Neychev">Dimitar Neychev</span>
+                            <span class="guest" data-bg="Димо Георгиев" data-en="Dimo Georgiev">Dimo Georgiev</span>
+                            <span class="guest" data-bg="Иванина Динева" data-en="Ivanina Dineva">Ivanina Dineva</span>
+                            <span class="guest" data-bg="Мирослав Димитров" data-en="Miroslav Dimitrov">Miroslav Dimitrov</span>
+                            <span class="guest" data-bg="Стефани Янкова" data-en="Stefani Yankova">Stefani Yankova</span>
+                            <span class="guest" data-bg="Янимир Янков" data-en="Yanimir Yankov">Yanimir Yankov</span>
+                        </div>
+                    </div>
+                    <div class="table-card">
+                        <div class="table-num" data-en="Table Eight" data-bg="Маса Осем">Table Eight</div>
+                        <div class="table-card-guests">
                             <span class="guest" data-bg="Вяра Николова" data-en="Vyara Nikolova">Vyara Nikolova</span>
                             <span class="guest" data-bg="Димана Ралева" data-en="Dimana Raleva">Dimana Raleva</span>
                             <span class="guest" data-bg="Евдокия Сотирова" data-en="Evdokiya Sotirova">Evdokiya Sotirova</span>
@@ -1839,7 +1878,7 @@
                         </div>
                     </div>
                     <div class="table-card">
-                        <div class="table-num" data-en="Table Eight" data-bg="Маса Осем">Table Eight</div>
+                        <div class="table-num" data-en="Table Nine" data-bg="Маса Девет">Table Nine</div>
                         <div class="table-card-guests">
                             <span class="guest" data-bg="Денис Караиджит" data-en="Denis Karayigit">Denis Karayigit</span>
                             <span class="guest" data-bg="Мариян Сотиров" data-en="Mariyan Sotirov">Mariyan Sotirov</span>
@@ -1849,21 +1888,6 @@
                             <span class="guest" data-bg="Петя Николаева" data-en="Petya Nikolaeva">Petya Nikolaeva</span>
                             <span class="guest" data-bg="Симеон Николаев" data-en="Simeon Nikolaev">Simeon Nikolaev</span>
                             <span class="guest" data-bg="Таня Сотирова" data-en="Tanya Sotirova">Tanya Sotirova</span>
-                        </div>
-                    </div>
-                    <div class="table-card">
-                        <div class="table-num" data-en="Table Nine" data-bg="Маса Девет">Table Nine</div>
-                        <div class="table-card-guests">
-                            <span class="guest" data-bg="Велиана Георгиева" data-en="Veliana Georgieva">Veliana Georgieva</span>
-                            <span class="guest" data-bg="Георги Ескидаров" data-en="Georgi Eskidarov">Georgi Eskidarov</span>
-                            <span class="guest" data-bg="Деница Ескидарова" data-en="Denitsa Eskidarova">Denitsa Eskidarova</span>
-                            <span class="guest" data-bg="Десислав Динев" data-en="Desislav Dinev">Desislav Dinev</span>
-                            <span class="guest" data-bg="Димитър Нейчев" data-en="Dimitar Neychev">Dimitar Neychev</span>
-                            <span class="guest" data-bg="Димо Георгиев" data-en="Dimo Georgiev">Dimo Georgiev</span>
-                            <span class="guest" data-bg="Иванина Динева" data-en="Ivanina Dineva">Ivanina Dineva</span>
-                            <span class="guest" data-bg="Мирослав Димитров" data-en="Miroslav Dimitrov">Miroslav Dimitrov</span>
-                            <span class="guest" data-bg="Стефани Янкова" data-en="Stefani Yankova">Stefani Yankova</span>
-                            <span class="guest" data-bg="Янимир Янков" data-en="Yanimir Yankov">Yanimir Yankov</span>
                         </div>
                     </div>
                 </div>
@@ -2001,6 +2025,7 @@
 
             function setLang(lang) {
                 currentLang = lang;
+                document.body.classList.toggle('lang-bg', lang === 'bg');
                 document.querySelectorAll('.lang-toggle button').forEach(btn => {
                     btn.classList.toggle('active', btn.textContent.trim() === lang.toUpperCase());
                 });
@@ -2025,6 +2050,7 @@
                 });
 
                 updateGuestLabels();
+                sortSeatingByLang(lang);
             }
 
             function updateGuestLabels() {
@@ -2050,6 +2076,19 @@
             function closeMenu() {
                 document.getElementById('navLinks').classList.remove('open');
                 document.querySelector('.nav').classList.remove('menu-open');
+            }
+
+            // ═══════════════ SEATING SORT BY LANGUAGE ═══════════════
+            function sortSeatingByLang(lang) {
+                document.querySelectorAll('.table-card-guests').forEach(container => {
+                    const spans = Array.from(container.querySelectorAll('.guest'));
+                    spans.sort((a, b) => {
+                        const aVal = (a.getAttribute('data-' + lang) || '').toLowerCase();
+                        const bVal = (b.getAttribute('data-' + lang) || '').toLowerCase();
+                        return aVal.localeCompare(bVal, lang === 'bg' ? 'bg' : 'en');
+                    });
+                    spans.forEach(s => container.appendChild(s));
+                });
             }
 
             // ═══════════════ SEATING SEARCH ═══════════════
